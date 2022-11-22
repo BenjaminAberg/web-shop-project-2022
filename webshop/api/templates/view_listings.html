@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listings</title>
+</head>
+<body>
+<div style="white-space: pre-line">
+    {% for listing in listings %}
+        <div class="listing">
+            <div class="listing-label" >
+                id: ({{ listing.id }}) 
+                Title: {{listing.title}}
+                Description: {{listing.description}} 
+                Price: {{ listing.price }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>
