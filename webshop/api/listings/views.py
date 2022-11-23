@@ -1,12 +1,20 @@
 from django.shortcuts import render, reverse
 from .serializers import ListingSerializer
 from rest_framework import generics
+from rest_framework.pagination import PageNumberPagination
 from django.views import View
 from .models import Listing
 from .forms import CreateListingForm
 from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
+
+# WIP IMPLEMENT PAGINATION!!
+
+class CardSetPagination(PageNumberPagination):
+    page_size = 2
+    page_size_query_param = 'page_size'
+    max_page_size = 10
 
 class AddListingView(View):
     def get(self, request):
