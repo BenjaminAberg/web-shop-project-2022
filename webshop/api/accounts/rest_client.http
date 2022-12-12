@@ -53,6 +53,18 @@ Content-Type: application/json
 
 ###
 
+PUT http://localhost:8000/myitems/editlisting/23
+Authorization: Token 5aca8ffdc761a906df40f3ee352a68403a659de0
+Content-Type: application/json
+
+{
+  "title": "Volvo 740",
+  "description": "Good condition",
+  "price": 2100
+}
+
+###
+
 GET http://localhost:8000/myitems/
 Authorization: Token 5aca8ffdc761a906df40f3ee352a68403a659de0
 

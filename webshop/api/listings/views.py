@@ -92,6 +92,24 @@ class DeleteListingApi(GenericAPIView):
         else:
             return HttpResponse("You don't have permission to delete this listing.")
 
+class EditListingApi(GenericAPIView):
+    permission_classes = [IsAuthenticated, ]
+    authentication_classes = [TokenAuthentication, ]
+
+    def put(self, request, listing_id):
+        listing = Listing.objects.get(id=listing_id)
+        
+        if request.user == listing.owner:
+            data = request.data    
+            serializer = ListingSerializer(listing, data=data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            else:
+                return Response(serializer.errors, status=400)
+        else:
+            return HttpResponse("You don't have permission to delete this listing.")
+
 class ListOwnItemsApi(GenericAPIView):
     permission_classes = [IsAuthenticated, ]
     authentication_classes = [TokenAuthentication, ]
@@ -119,4 +137,3 @@ class ListOwnItemsApi(GenericAPIView):
             data = []
         return self.get_paginated_response(data)
 
-        
