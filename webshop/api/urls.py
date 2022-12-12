@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.generic import TemplateView
 from django.contrib.auth import views as auth_view
 from .views import index
 from .listings.views import ListListingsApi, AddListingApi, DeleteListingApi, EditListingApi, ListOwnItemsApi
@@ -9,7 +10,8 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('', index),
-    path('shop/', ListListingsApi.as_view(), name="viewlistings"),
+    path('shop/', TemplateView.as_view(template_name='index.html')),
+    path('listings/', ListListingsApi.as_view(), name="viewlistings"),
     path('account/', GetUserView.as_view()),
     path('myitems/', ListOwnItemsApi.as_view()),
     path('myitems/addlisting/', AddListingApi.as_view(), name="addlisting"),
