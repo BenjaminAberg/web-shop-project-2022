@@ -1,6 +1,7 @@
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
+from rest_framework.authentication import TokenAuthentication
 
 from django.contrib.auth.models import User
 from .serializers import RegisterUserSerializer, UserSerializer, LoginSerializer
@@ -52,6 +53,7 @@ class LoginApiView(generics.GenericAPIView):
 
 class GetUserView(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated, ]
+    authentication_classes = [TokenAuthentication, ]
     serializer_class = UserSerializer
 
     def get_object(self):

@@ -73,3 +73,7 @@ Authorization: Token 5aca8ffdc761a906df40f3ee352a68403a659de0
 DELETE http://localhost:8000/myitems/deletelisting/22
 Authorization: Token 5aca8ffdc761a906df40f3ee352a68403a659de0
 
+###
+
+GET http://localhost:8000/account/
+Authorization: Token 5aca8ffdc761a906df40f3ee352a68403a659de0
