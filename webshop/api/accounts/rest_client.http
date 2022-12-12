@@ -17,3 +17,14 @@ Content-Type: application/json
   "password": "test8"
 }
 
+###
+
+POST http://localhost:8000/shop/
+Authorization: Token b72c4249f321f71e9a1dfa362316d6203aef1158
+Content-Type: application/json
+
+{
+  "title": "Mug",
+  "description": "white",
+  "price": 2
+}

@@ -21,7 +21,7 @@ class ListingSetPagination(PageNumberPagination):
 
 class AddListingView(View):
     permission_classes = [IsAuthenticated, ]
-    authentication_classes = [JWTAuthentication, ]
+    authentication_classes = [TokenAuthentication, ]
 
     def get(self, request):
         form = CreateListingForm()
@@ -35,8 +35,9 @@ class AddListingView(View):
             title = cd['title']
             description = cd['description']
             price = cd['price']
-
-            listing = Listing(title=title, description=description, price=price)
+            owner=self.request.user
+            
+            listing = Listing(title=title, description=description, price=price, owner=owner.user)
             listing.save()
             return HttpResponseRedirect(reverse("viewlistings"))
 
