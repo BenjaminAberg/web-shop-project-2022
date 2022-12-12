@@ -2,9 +2,9 @@ POST http://localhost:8000/signup/
 Content-Type: application/json
 
 {
-  "username": "test8",
-  "email": "test8@asd.com",
-  "password": "test8"
+  "username": "test9",
+  "email": "test9@asd.com",
+  "password": "test9"
 }
 
 ###
@@ -13,8 +13,8 @@ POST http://localhost:8000/login/
 Content-Type: application/json
 
 {
-  "username": "test8",
-  "password": "test8"
+  "username": "test9",
+  "password": "test9"
 }
 
 ###
@@ -50,6 +50,11 @@ Content-Type: application/json
   "description": "Good condition",
   "price": 2500
 }
+
+###
+
+GET http://localhost:8000/myitems/
+Authorization: Token 5aca8ffdc761a906df40f3ee352a68403a659de0
 
 ###
 

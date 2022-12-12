@@ -91,4 +91,32 @@ class DeleteListingApi(GenericAPIView):
             return HttpResponse("Listing " + str(listing_id) + " deleted.")
         else:
             return HttpResponse("You don't have permission to delete this listing.")
+
+class ListOwnItemsApi(GenericAPIView):
+    permission_classes = [IsAuthenticated, ]
+    authentication_classes = [TokenAuthentication, ]
+    pagination_class = ListingSetPagination
+
+    def get_queryset(self):
+        return Listing.objects.all()
+
+    def get(self, request):
+        
+        listings = Listing.objects.all()
+        own_listings = []
+
+        for listing in listings:
+            if listing.owner == self.request.user:
+                own_listings.append(listing)
+
+        page = self.paginate_queryset(own_listings)
+        if page:
+            # queryset is not empty
+            serializer = ListingSerializer(page, many=True)
+            data = serializer.data
+        else:
+            # queryset is empty
+            data = []
+        return self.get_paginated_response(data)
+
         
