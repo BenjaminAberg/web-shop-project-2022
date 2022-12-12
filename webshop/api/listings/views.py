@@ -19,7 +19,7 @@ class ListingSetPagination(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 100
 
-class AddListingView(View):
+class AddListingForm(View):
     permission_classes = [IsAuthenticated, ]
     authentication_classes = [TokenAuthentication, ]
 
@@ -43,7 +43,7 @@ class AddListingView(View):
 
         return render(request, 'create_listing_form.html', {'form': form})
 
-class ListingListPageAPI(GenericAPIView):
+class ListListingsApi(GenericAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly, ]
     authentication_classes = [TokenAuthentication, ]
     pagination_class = ListingSetPagination
@@ -65,20 +65,30 @@ class ListingListPageAPI(GenericAPIView):
             data = []
         return self.get_paginated_response(data)
 
-    def post(self, request):
+class AddListingApi(GenericAPIView):
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
+    authentication_classes = [TokenAuthentication, ]
 
+    def post(self, request):
         serializer = ListingSerializer(data=request.data)
         if serializer.is_valid():
+            serializer.validated_data['owner'] = self.request.user
             serializer.save()
             return Response(serializer.data)
         else:
             return Response(serializer.errors, status=400)
 
-def view_listings(request):
-    listings = Listing.objects.all()
-    return render(request, "view_listings.html", {"listings": listings})
+class DeleteListingApi(GenericAPIView):
+    permission_classes = [IsAuthenticated, ]
+    authentication_classes = [TokenAuthentication, ]
 
-def delete_listing(request, listing_id):
-    listing = Listing.objects.get(id=listing_id)
-    listing.delete()
-    return HttpResponse("Listing " + str(listing_id) + " deleted.")
+    def delete(self, request, listing_id):
+
+        listing = Listing.objects.get(id=listing_id)
+        
+        if request.user == listing.owner:
+            listing.delete()
+            return HttpResponse("Listing " + str(listing_id) + " deleted.")
+        else:
+            return HttpResponse("You don't have permission to delete this listing.")
+        

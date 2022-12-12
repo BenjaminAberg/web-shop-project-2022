@@ -19,12 +19,40 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:8000/shop/
+POST http://localhost:8000/login/
+Content-Type: application/json
+
+{
+  "username": "test7",
+  "password": "test7"
+}
+
+###
+
+POST http://localhost:8000/myitems/addlisting/
 Authorization: Token b72c4249f321f71e9a1dfa362316d6203aef1158
 Content-Type: application/json
 
 {
-  "title": "Mug",
-  "description": "white",
-  "price": 2
+  "title": "Used phone",
+  "description": "Minimal wear",
+  "price": 80
 }
+
+###
+
+POST http://localhost:8000/myitems/addlisting/
+Authorization: Token 5aca8ffdc761a906df40f3ee352a68403a659de0
+Content-Type: application/json
+
+{
+  "title": "Volvo 740",
+  "description": "Good condition",
+  "price": 2500
+}
+
+###
+
+DELETE http://localhost:8000/myitems/deletelisting/22
+Authorization: Token 5aca8ffdc761a906df40f3ee352a68403a659de0
+
