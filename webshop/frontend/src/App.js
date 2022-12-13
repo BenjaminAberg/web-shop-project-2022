@@ -1,45 +1,48 @@
-import './App.css'
+import './App.css';
 import {useState, useEffect} from 'react';
 import Listing from './components/Listing';
 import ListingContainer from './components/ListingContainer';
 
 function App() {
 
-  let listingList = [];
+    const [listings, setListings] = useState([]);
 
-  function setListingList(data) {
-    listingList = data;
-  }
+    let listingList = [];
 
-  const fetchApi = () => {
-    console.log("Fetching listings");
-    fetch('http://127.0.0.1:8000/listings')
-        .then( response => {
-            if(!response.ok){
-                throw new Error("http error: " + response.statusCode)
-            }
-            return response.json()
-        })
-        .then(data => setListingList((
-            data.response
-        )))
-        .catch(err => console.log("Error: ", err))
-    console.log("Fetching listings DONE");
-  }
-  
-  useEffect(() =>{
-    console.log("App changed");
-    fetchApi();
-  }, [])
+    listingList = listings.map((title, description) => (
+      <Listing title={title} description={description}/>
+    ))
 
-  return (
-    <div>
-        <div className="App">
+    const fetchListings = () => {
+        console.log("Fetching listings");
+        fetch('http://127.0.0.1:8000/listings')
+            .then( response => {
+                if(!response.ok){
+                    throw new Error("http error: " + response.statusCode)
+                }
+                return response.json()
+            })
+            .then(data => setListings((
+              prev => data.results.map(p => p.title)
+      
+          )))
+            .catch(err => console.log("Error: ", err))
+        console.log("Fetching listings DONE");
+    }
+    
+    useEffect(() =>{
+        console.log("App changed");
+        fetchListings();
+    }, [])
+
+    return (
+      <div>
+          <div className="App">
             <ListingContainer listings={listingList}></ListingContainer>
-            <button onClick={fetchApi} >Fetch from API</button>
-        </div>
-    </div>
-  );
+          </div>
+          <button onClick={fetchListings}>Fetch listings from API</button>
+      </div>
+    );
 }
   
 export default App;

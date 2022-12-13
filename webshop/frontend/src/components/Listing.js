@@ -2,40 +2,37 @@
 
 function Listing(props){
     const cStyle = {
-        width: '100px',
-        height: '200px',
-        margin: '10px',
-        border: 'solid 1px black'
+        width: '300px',
+        height: '300px',
+        margin: '20px',
+        border: 'solid 1px grey'
     }
 
 
     return (
-        <div style={cStyle} onClick={() => props.addHandler(props.color)}>
-            <Square scolor={props.color}></Square>
-            <Label lcolor={props.color}></Label>
+        <div style={cStyle}>
+            <Square description = {props.description}></Square>
+            <Label label = {props.title}></Label>
         </div>
     )
 }
 
 function Square(props){
     const sStyle = {
-        width: '100px',
-        height: '150px',
-        backgroundColor: ''
+        width: '300px',
+        height: '260px',
+        backgroundColor: '#ebf0ec'
     }
-    sStyle.backgroundColor = props.scolor;
 
-    return <div style={sStyle}></div>
+    return <div style={sStyle}>{props.description}</div>
 }
 
 function Label(props){
     const lStyle = {
-        width: '100px',
+        width: '300px',
         height: '50px'
     }
-     return <div style={lStyle}>
-         {props.lcolor}
-     </div>
+     return <div style={lStyle}><h3>{props.label}</h3></div>
 }
 
 export default Listing;
