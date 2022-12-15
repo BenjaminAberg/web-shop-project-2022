@@ -9,8 +9,6 @@ from django.urls import path
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name="home.html")),
-    path('shop/', TemplateView.as_view(template_name="index.html")),
     path('listings/', ListListingsApi.as_view(), name="viewlistings"),
     path('account/', GetUserView.as_view()),
     path('myitems/', ListOwnItemsApi.as_view()),

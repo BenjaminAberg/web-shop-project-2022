@@ -1,5 +1,4 @@
 
-
 function Listing(props){
     const cStyle = {
         width: '300px',

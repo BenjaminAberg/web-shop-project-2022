@@ -1,7 +1,8 @@
 import './App.css';
 import {useState, useEffect} from 'react';
-import Listing from './components/Listing';
-import ListingContainer from './components/ListingContainer';
+import Listing from './components/pages/Listing';
+import ListingContainer from './components/pages/ListingContainer';
+import RoutingComponent from './components/routing/RoutingComponent';
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
 
     const fetchListings = () => {
         console.log("Fetching listings");
-        fetch('http://127.0.0.1:8000/listings')
+        fetch('http://127.0.0.1:8000/api/listings')
             .then( response => {
                 if(!response.ok){
                     throw new Error("http error: " + response.statusCode)
@@ -38,7 +39,10 @@ function App() {
     return (
       <div>
           <div className="App">
-            <ListingContainer listings={listingList}></ListingContainer>
+                <div><RoutingComponent/></div>
+          </div>
+          <div className="App">
+                <div><ListingContainer listings={listingList}></ListingContainer></div>
           </div>
           <button onClick={fetchListings}>Fetch listings from API</button>
       </div>
