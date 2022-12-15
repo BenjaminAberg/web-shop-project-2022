@@ -21,7 +21,7 @@ function LogInInputForm(props){
         <div>
             <label>
                 Username:  <input type='text' value={user} onChange={updateUValue}/>
-                Password:  <input type='text' value={pass} onChange={updatePValue}/>
+                Password:  <input type='password' value={pass} onChange={updatePValue}/>
             </label>
             <button onClick={() => props.Login(user, pass)}>{props.text}</button>
         </div>

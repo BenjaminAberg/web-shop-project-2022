@@ -42,7 +42,10 @@ function App() {
                 <div><RoutingComponent/></div>
           </div>
           <div className="App">
-                <div><ListingContainer listings={listingList}></ListingContainer></div>
+                <div>
+                    <h3 className='Listings'>Webshop listings:</h3>
+                    <ListingContainer listings={listingList}></ListingContainer>
+                </div>
           </div>
           <button onClick={fetchListings}>Fetch listings from API</button>
       </div>

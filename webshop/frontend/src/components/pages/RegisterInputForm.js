@@ -26,7 +26,7 @@ function RegisterInputForm(props){
             <label>
                 Email:  <input type='text' value={email} onChange={updateEValue}/>
                 Username:  <input type='text' value={user} onChange={updateUValue}/>
-                Password:  <input type='text' value={pass} onChange={updatePValue}/>
+                Password:  <input type='password' value={pass} onChange={updatePValue}/>
             </label>
             <button onClick={() => props.Register(user, pass, email)}>{props.text}</button>
         </div>

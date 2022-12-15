@@ -1,4 +1,7 @@
 .App {
-  text-align: center;
   display: flex;
+}
+
+.Listings {
+  margin-left: 20px;
 }
