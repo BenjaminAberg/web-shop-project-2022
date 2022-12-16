@@ -11,8 +11,8 @@ function Search() {
 
     let searchList = [];
 
-    searchList = searchListings.map((title, description) => (
-      <Listing title={title} description={description}/>
+    searchList = searchListings.map(listing => (
+        <Listing title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}/>
     ))
 
     const search = (search_term) => {
@@ -29,7 +29,7 @@ function Search() {
                 return response.json()
             })
             .then( data => {
-                setSearch(prev => data.results.map(p => p.title));
+                setSearch(data.results);
                 setSearchParam(search_term)
             })
             .catch(err => {

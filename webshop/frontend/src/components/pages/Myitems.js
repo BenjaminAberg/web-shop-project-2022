@@ -8,8 +8,8 @@ function Myitems() {
 
     let listingList = [];
 
-    listingList = listings.map((title, description) => (
-      <Listing title={title} description={description}/>
+    listingList = listings.map(listing => (
+        <Listing title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}/>
     ))
 
     const fetchMyItems = () => {
@@ -28,9 +28,9 @@ function Myitems() {
                 }
                 return response.json()
             })
-            .then((data) => setListings((
-                prev => data.results.map(p => p.title)
-            )))
+            .then(data => {
+                setListings(data.results)
+            })
             .catch(err => {
                 console.log("Error: ", err.response.status, err.response.statusText);
             })

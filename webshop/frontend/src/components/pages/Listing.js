@@ -9,8 +9,8 @@ function Listing(props){
 
     return (
         <div style={cStyle}>
-            <Square description = {props.description}></Square>
-            <Label label = {props.title}></Label>
+            <Square description={props.description} price={props.price} created_at={props.created_at}></Square>
+            <Label label={props.title}></Label>
         </div>
     )
 }
@@ -22,7 +22,11 @@ function Square(props){
         backgroundColor: '#ebf0ec'
     }
 
-    return <div style={sStyle}>{props.description}</div>
+    return <div style={sStyle}>
+            <b>Description:&nbsp;</b><i>{props.description}</i><br></br>
+            <b>Price:&nbsp;</b><i>{props.price}€</i><br></br>
+            <b>Created at:&nbsp;</b><i>{props.created_at}</i><br></br>
+        </div>
 }
 
 function Label(props){
