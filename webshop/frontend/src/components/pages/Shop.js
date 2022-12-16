@@ -9,8 +9,11 @@ function Shop() {
     let listingList = [];
 
     listingList = listings.map((title, description) => (
-      <Listing title={title} description={description}/>
+        <Listing title={title} description={description}/>
     ))
+
+    console.log(listings)
+    console.log(listingList)
 
     const fetchListings = () => {
         console.log("Fetching listings");
@@ -21,10 +24,9 @@ function Shop() {
                 }
                 return response.json()
             })
-            .then(data => setListings((
-              prev => data.results.map(p => p.title)
-      
-          )))
+            .then(data => {
+                setListings(data.results.map(p => p.title, p => p.description))
+            })
             .catch(err => console.log("Error: ", err))
         console.log("Fetching listings DONE");
     }
