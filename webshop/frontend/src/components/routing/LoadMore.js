@@ -7,7 +7,6 @@ function LoadMore() {
     const apiuri = "http://127.0.0.1:8000/api/listings";
 
     const [listings, setListings]= useState([]);
-
     const [loadMore, setLoadMore] = useState(apiuri);
     const [prevPage, setPrev] = useState(null);
 
@@ -21,15 +20,15 @@ function LoadMore() {
         fetch(page)
             .then(response => {
                 if (!response.ok) {
-                    let err = new Error(' Error in request');
+                    let err = new Error('Error in request');
                     throw err;
                 }
                 return response.json();
             })
             .then((data) => {
-                setListings([...data.results]);
-                setPrev(data.previous)
+                setPrev(data.previous);
                 setLoadMore(data.next);
+                if (page !== apiuri) setListings([...listings, ...data.results]);
             })
             .catch(err => {
                 console.log("ERROR: ", err.name, err.message);
@@ -42,9 +41,11 @@ function LoadMore() {
 
     return (
         <div>
-            {loadMore && <button className="load-more-button" onClick={() => fetchMore(loadMore)}>Load more</button>}
             <div>
                 {prevPage !== null && <ListingContainer listings={listingList}></ListingContainer>}
+            </div>
+            <div>
+                {loadMore && <button className="load-more-button" onClick={() => fetchMore(loadMore)}>Load more</button>}
             </div>
         </div>
     )
