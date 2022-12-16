@@ -12,8 +12,6 @@ function Myitems() {
       <Listing title={title} description={description}/>
     ))
 
-    console.log(listingList);
-
     const fetchMyItems = () => {
         fetch('http://127.0.0.1:8000/api/myitems/', {
             method: 'GET',

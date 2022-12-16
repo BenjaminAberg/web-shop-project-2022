@@ -1,5 +1,6 @@
 .App {
   display: flex;
+  margin-right: 0;
 }
 
 .Listings {

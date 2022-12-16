@@ -11,6 +11,7 @@ from django.views import View
 from .models import Listing
 from .forms import CreateListingForm
 from django.http import HttpResponse, HttpResponseRedirect
+from django.db.models import Q
 
 # Create your views here.
 
@@ -128,6 +129,7 @@ class ListOwnItemsApi(GenericAPIView):
                 own_listings.append(listing)
 
         page = self.paginate_queryset(own_listings)
+
         if page:
             # queryset is not empty
             serializer = ListingSerializer(page, many=True)
@@ -137,3 +139,28 @@ class ListOwnItemsApi(GenericAPIView):
             data = []
         return self.get_paginated_response(data)
 
+class SearchListingsApi(GenericAPIView):
+    pagination_class = ListingSetPagination
+
+    def get_queryset(self):
+        return Listing.objects.all()
+
+    def get(self, request, search_term):
+
+        qset = Q()
+
+        for term in search_term.split():
+            qset |= Q(title__contains=term)
+
+        matching_results = Listing.objects.filter(qset)
+
+        page = self.paginate_queryset(matching_results)
+        
+        if page:
+            # queryset is not empty
+            serializer = ListingSerializer(page, many=True)
+            data = serializer.data
+        else:
+            # queryset is empty
+            data = []
+        return self.get_paginated_response(data)

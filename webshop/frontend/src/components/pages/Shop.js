@@ -37,7 +37,7 @@ function Shop() {
     return (
       <div>
           <div>
-            <h3 className='Listings'>Webshop listings:</h3>
+            <h3 className='Listings'>All webshop listings:</h3>
             <ListingContainer listings={listingList}></ListingContainer>
         </div>
       </div>

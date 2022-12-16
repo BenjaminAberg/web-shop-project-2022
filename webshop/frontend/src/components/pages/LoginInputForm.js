@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 
-function LogInInputForm(props){
+function LoginInputForm(props){
 
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
@@ -28,4 +28,4 @@ function LogInInputForm(props){
     )
 }
 
-export default LogInInputForm;
+export default LoginInputForm;

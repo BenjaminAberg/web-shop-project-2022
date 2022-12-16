@@ -1,6 +1,6 @@
 .menu {
     display: flex;
-    background-color: lightblue;
+    background-color: rgb(169, 249, 255);
     padding: 20px;
     margin:0;
 }
@@ -24,4 +24,13 @@
 .login {
     height:200px;
     width: 100vw;
+}
+
+.searchbar {
+    display: flex;
+    text-align: center;
+    padding: 10px;
+    width: fit-content;
+    margin-right: 0;
+    margin-left: auto;
 }
