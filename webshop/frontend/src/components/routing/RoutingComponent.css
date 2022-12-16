@@ -34,3 +34,12 @@
     margin-right: 0;
     margin-left: auto;
 }
+
+.load-more-button {
+    position: relative; 
+    margin-left: -50px;
+    left: 50%;
+    width: 100px;
+    height: 40px;
+    bottom: 0px;
+}

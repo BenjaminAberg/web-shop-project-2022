@@ -14,13 +14,13 @@ const RoutingComponent = () =>{
                 <div>
                     <BrowserRouter>
                         <div className={"menu"} >
-                            <NavLink className={"menu-item"} to="/shop/">Home</NavLink>
+                            <NavLink className={"menu-item"} to="/shop">Home</NavLink>
                             <NavLink className={"menu-item"} to="/shop/myitems">My items</NavLink>
                             <NavLink className={"menu-item"} to="/shop/logout">Logout</NavLink>
                             <NavLink className={"menu-item"} to="/shop/search">Go to search</NavLink>
                         </div>
                         <Routes>
-                            <Route path="/shop/"/>
+                            <Route path="/shop"/>
                             <Route path="/shop/myitems" element={<Myitems />} />
                             <Route path="/shop/logout" element={<Logout />} />
                             <Route path="/shop/search" element={<Search />} />
@@ -34,7 +34,7 @@ const RoutingComponent = () =>{
             <div>
                 <BrowserRouter>
                     <div className={"menu"} >
-                        <NavLink className={"menu-item"} to="/shop/">Home</NavLink>
+                        <NavLink className={"menu-item"} to="/shop">Home</NavLink>
                         <NavLink className={"menu-item"} to="/shop/register">Register</NavLink>
                         <NavLink className={"menu-item"} to="/shop/login">Login</NavLink>
                         <NavLink className={"menu-item"} to="/shop/search">Go to search</NavLink>
@@ -43,7 +43,7 @@ const RoutingComponent = () =>{
 
                     </div>
                     <Routes>
-                        <Route path="/shop/"/>
+                        <Route path="/shop"/>
                         <Route path="/shop/register" element={<Register />} />
                         <Route path="/shop/login" element={<Login />} />
                         <Route path="/shop/search" element={<Search />} />

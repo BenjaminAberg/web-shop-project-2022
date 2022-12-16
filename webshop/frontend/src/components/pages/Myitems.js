@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import AddListingInputForm from './AddListingInputForm';
 import Listing from './Listing';
 import ListingContainer from './ListingContainer';
 
@@ -42,10 +43,43 @@ function Myitems() {
         fetchMyItems();
     }, [])
 
+    const addListing = (addTitle, addDescription, addPrice) => {
+        fetch(' http://127.0.0.1:8000/api/myitems/addlisting/', {
+            method: 'POST',
+            headers: {
+                'Authorization' : 'Token ' + localStorage.getItem("token"),
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify({
+                title: addTitle,
+                description: addDescription,
+                price: addPrice })
+        })
+            .then(response => {
+                if(!response.ok){
+                    console.log(addPrice);
+                    throw new Error("http error: " + response.statusCode);
+                }
+                return response.json()
+            })
+            .then( data => {
+                console.log(data);
+            })
+            .catch(response => {
+                console.log("Error: ", response.status, response.statusText);
+         })
+    }
+
     return (
         <div>
-            <h3 className='Listings'>Own listings:</h3>
-            <ListingContainer listings={listingList}></ListingContainer>
+            <div>
+                <h3 className='Listings'>Own listings:</h3>
+                <ListingContainer listings={listingList}></ListingContainer>
+            </div>
+            <div>
+                <h4 className='Listings'>Create new listing:</h4>
+                <AddListingInputForm text={"Create new listing"} AddListing={addListing}></AddListingInputForm>
+            </div>
         </div>
     );
 }

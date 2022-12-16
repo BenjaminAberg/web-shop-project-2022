@@ -37,7 +37,7 @@ function Shop() {
       <div>
           <div>
             <h3 className='Listings'>All webshop listings:</h3>
-            <ListingContainer listings={listingList}></ListingContainer>
+            <ListingContainer key={listingList} listings={listingList}></ListingContainer>
         </div>
       </div>
     );
