@@ -19,14 +19,14 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:8000/api/cart/purchase/35
+POST http://localhost:8000/api/cart/purchase/25
 Authorization: Token 0627ccdc6fb21ad86844e8eb4a300b161af5237c
 Content-Type: application/json
 
 
 ###
 
-POST http://localhost:8000/api/cart/add/34
+POST http://localhost:8000/api/cart/add/44
 Authorization: Token 0627ccdc6fb21ad86844e8eb4a300b161af5237c
 Content-Type: application/json
 

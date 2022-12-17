@@ -16,8 +16,13 @@ class AddToCartApi(GenericAPIView):
         try:
             cart = Cart.objects.get(owner=self.request.user)
             listing = Listing.objects.get(id=listing_id)
-            cart.listings.add(listing)
-            return HttpResponse("Listing " + str(listing_id) + " successfully added to cart owner" + str(cart.owner))
+
+            if not listing.owner == cart.owner:
+                cart.listings.add(listing)
+                return HttpResponse("Listing " + str(listing_id) + " successfully added to cart owner" + str(cart.owner))
+            
+            else:
+                return HttpResponse("Listing cannot be bought by its owner.")
         
         except:
             serializer = CartSerializer(data=request.data)
@@ -60,6 +65,7 @@ class HandlePaymentApi(GenericAPIView):
     def post(self, request, listing_id):
         
         listing = Listing.objects.get(id=listing_id)
+        cart = Cart.objects.get(owner=self.request.user)
         data = {'title': listing.title, 'description': listing.description, 'price': listing.price}
         serializer = ListingSerializer(listing, data=data)
         
@@ -67,6 +73,11 @@ class HandlePaymentApi(GenericAPIView):
             serializer.validated_data['buyer'] = self.request.user
             serializer.validated_data['sold'] = 1
             serializer.save()
+            cart.listings.remove(listing)
+            
+            if cart.listings.count() == 0:
+                cart.delete()
+
             return HttpResponse("Listing " + str(listing_id) + " purchased by " + str(self.request.user))
         else:
             return HttpResponse("Listing " + str(listing_id) + " already sold.")
