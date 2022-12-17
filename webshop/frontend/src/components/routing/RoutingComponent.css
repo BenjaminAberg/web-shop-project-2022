@@ -2,7 +2,9 @@
     display: flex;
     background-color: rgb(169, 249, 255);
     padding: 20px;
-    margin:0;
+    left: 0px;
+    right: 0px;
+    top: 0px;
 }
 
 .menu-item{
@@ -31,8 +33,8 @@
     text-align: center;
     padding: 10px;
     width: fit-content;
-    margin-right: 0;
-    margin-left: auto;
+    position: relative; 
+    margin-left: 0px;
 }
 
 .load-more-button {

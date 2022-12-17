@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -22,4 +22,11 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name="home.html")),
     path('shop/', TemplateView.as_view(template_name="index.html")),
     path('api/', include('api.urls')),
+]
+
+urlpatterns += [
+    # match the root
+    re_path(r'^$', TemplateView.as_view(template_name="index.html")),
+    # match all other pages
+    re_path(r'^(?:.*)/?$', TemplateView.as_view(template_name="index.html")),
 ]
