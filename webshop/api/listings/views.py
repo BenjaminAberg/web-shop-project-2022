@@ -54,7 +54,7 @@ class ListListingsApi(GenericAPIView):
 
     def get(self, request):
         
-        listing = Listing.objects.all()
+        listing = Listing.objects.all().order_by('-created_at')
 
         page = self.paginate_queryset(listing)
         if page:
@@ -121,7 +121,7 @@ class ListOwnItemsApi(GenericAPIView):
 
     def get(self, request):
         
-        listings = Listing.objects.all()
+        listings = Listing.objects.all().order_by('-created_at')
         own_listings = []
 
         for listing in listings:
@@ -152,7 +152,7 @@ class SearchListingsApi(GenericAPIView):
         for term in search_term.split():
             qset |= Q(title__contains=term)
 
-        matching_results = Listing.objects.filter(qset)
+        matching_results = Listing.objects.filter(qset).order_by('-created_at')
 
         page = self.paginate_queryset(matching_results)
         

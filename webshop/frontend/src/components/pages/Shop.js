@@ -10,7 +10,7 @@ function Shop() {
 
     listingList = listings.map(listing => (
         <Listing title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}/>
-    ))
+    ));
 
     const fetchListings = () => {
         console.log("Fetching listings");
@@ -22,7 +22,7 @@ function Shop() {
                 return response.json()
             })
             .then(data => {
-                setListings(data.results)
+                setListings(data.results);
             })
             .catch(err => console.log("Error: ", err))
         console.log("Fetching listings DONE");
