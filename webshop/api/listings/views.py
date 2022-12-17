@@ -54,7 +54,7 @@ class ListListingsApi(GenericAPIView):
 
     def get(self, request):
         
-        listing = Listing.objects.all().order_by('-created_at')
+        listing = Listing.objects.all().filter(sold=0).order_by('-created_at')
 
         page = self.paginate_queryset(listing)
         if page:
@@ -101,7 +101,7 @@ class EditListingApi(GenericAPIView):
         listing = Listing.objects.get(id=listing_id)
         
         if request.user == listing.owner:
-            data = request.data    
+            data = request.data 
             serializer = ListingSerializer(listing, data=data)
             if serializer.is_valid():
                 serializer.save()
@@ -152,7 +152,7 @@ class SearchListingsApi(GenericAPIView):
         for term in search_term.split():
             qset |= Q(title__contains=term)
 
-        matching_results = Listing.objects.filter(qset).order_by('-created_at')
+        matching_results = Listing.objects.filter(qset).filter(sold=0).order_by('-created_at')
 
         page = self.paginate_queryset(matching_results)
         
@@ -164,3 +164,21 @@ class SearchListingsApi(GenericAPIView):
             # queryset is empty
             data = []
         return self.get_paginated_response(data)
+
+class HandlePaymentApi(GenericAPIView):
+    permission_classes = [IsAuthenticated, ]
+    authentication_classes = [TokenAuthentication, ]
+
+    def post(self, request, listing_id):
+        
+        listing = Listing.objects.get(id=listing_id)
+        data = {'title': listing.title, 'description': listing.description, 'price': listing.price}
+        serializer = ListingSerializer(listing, data=data)
+        
+        if not listing.sold and serializer.is_valid():
+            serializer.validated_data['buyer'] = self.request.user
+            serializer.validated_data['sold'] = 1
+            serializer.save()
+            return HttpResponse("Listing " + str(listing_id) + " purchased by " + str(self.request.user))
+        else:
+            return HttpResponse("Listing " + str(listing_id) + " already sold.")
