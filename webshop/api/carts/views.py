@@ -33,6 +33,26 @@ class AddToCartApi(GenericAPIView):
             else:
                 return HttpResponse("Failed to create cart: " + str(serializer.errors, status=400))
 
+class RemoveFromCartApi(GenericAPIView):
+    permission_classes = [IsAuthenticated, ]
+    authentication_classes = [TokenAuthentication, ]
+
+    def delete(self, request, listing_id):
+        
+        try:
+            listing = Listing.objects.get(id=listing_id)
+            cart = Cart.objects.get(owner=self.request.user)
+            cart.listings.remove(listing)
+
+            if cart.listings.count() == 0:
+                cart.delete()
+
+            return HttpResponse("Listing " + str(listing_id) + " removed from cart owner " + str(cart.owner))
+        
+        except:
+            return HttpResponse("Something went wrong")
+
+
 class HandlePaymentApi(GenericAPIView):
     permission_classes = [IsAuthenticated, ]
     authentication_classes = [TokenAuthentication, ]
