@@ -26,6 +26,13 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost:8000/api/cart/addtocart/24
+Authorization: Token 0627ccdc6fb21ad86844e8eb4a300b161af5237c
+Content-Type: application/json
+
+
+###
+
 PUT http://localhost:8000/api/myitems/editlisting/36
 Authorization: Token 0627ccdc6fb21ad86844e8eb4a300b161af5237c
 Content-Type: application/json
