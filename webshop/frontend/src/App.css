@@ -3,6 +3,12 @@
   margin-right: 0;
 }
 
+.Menu-bar {
+  display: flex;
+  border-bottom: 4px solid grey;
+  border-top: 4px solid grey;
+}
+
 .Listings {
   margin-left: 20px;
 }

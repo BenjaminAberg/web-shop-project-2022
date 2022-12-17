@@ -6,7 +6,7 @@ import LoadMore from './components/routing/LoadMore';
 function App() {
     return (
       <div>
-          <div className="App">
+          <div className="Menu-bar">
                 <div><RoutingComponent/></div>
           </div>
           <div className="App">

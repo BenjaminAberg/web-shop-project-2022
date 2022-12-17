@@ -13,7 +13,7 @@ const RoutingComponent = () =>{
             <div>
                 <div>
                     <BrowserRouter>
-                        <div className={"menu"} >
+                        <div className={"App"} >
                             <NavLink className={"menu-item"} to="/shop">Home</NavLink>
                             <NavLink className={"menu-item"} to="/shop/myitems">My items</NavLink>
                             <NavLink className={"menu-item"} to="/shop/logout">Logout</NavLink>
@@ -33,11 +33,11 @@ const RoutingComponent = () =>{
         <div>
             <div>
                 <BrowserRouter>
-                    <div className={"menu"} >
+                    <div className={"App"} >
                         <NavLink className={"menu-item"} to="/shop">Home</NavLink>
                         <NavLink className={"menu-item"} to="/shop/register">Register</NavLink>
                         <NavLink className={"menu-item"} to="/shop/login">Login</NavLink>
-                        <NavLink className={"menu-item"} to="/shop/search">Go to search</NavLink>
+                        <NavLink className={"menu-item-right"} to="/shop/search">Go to search</NavLink>
                     </div>
                     <div>
 
