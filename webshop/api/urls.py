@@ -2,7 +2,8 @@ from django.urls import path
 from django.views.generic import TemplateView
 from django.contrib.auth import views as auth_view
 from .views import index
-from .listings.views import ListListingsApi, AddListingApi, DeleteListingApi, EditListingApi, ListOwnItemsApi, SearchListingsApi, HandlePaymentApi
+from .listings.views import ListListingsApi, AddListingApi, DeleteListingApi, EditListingApi, ListOwnItemsApi, SearchListingsApi
+from .carts.views import HandlePaymentApi
 from .accounts.views import RegisterApiView, LoginApiView, GetUserView
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.urls import path

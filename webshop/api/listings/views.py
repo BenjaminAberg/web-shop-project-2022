@@ -1,10 +1,8 @@
 from django.shortcuts import render, reverse
 from .serializers import ListingSerializer
-from rest_framework import generics
 from rest_framework.generics import GenericAPIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
-from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
 from django.views import View
@@ -164,21 +162,3 @@ class SearchListingsApi(GenericAPIView):
             # queryset is empty
             data = []
         return self.get_paginated_response(data)
-
-class HandlePaymentApi(GenericAPIView):
-    permission_classes = [IsAuthenticated, ]
-    authentication_classes = [TokenAuthentication, ]
-
-    def post(self, request, listing_id):
-        
-        listing = Listing.objects.get(id=listing_id)
-        data = {'title': listing.title, 'description': listing.description, 'price': listing.price}
-        serializer = ListingSerializer(listing, data=data)
-        
-        if not listing.sold and serializer.is_valid():
-            serializer.validated_data['buyer'] = self.request.user
-            serializer.validated_data['sold'] = 1
-            serializer.save()
-            return HttpResponse("Listing " + str(listing_id) + " purchased by " + str(self.request.user))
-        else:
-            return HttpResponse("Listing " + str(listing_id) + " already sold.")
