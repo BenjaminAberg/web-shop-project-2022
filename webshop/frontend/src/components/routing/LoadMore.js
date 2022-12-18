@@ -1,5 +1,5 @@
-import Listing from "../pages/Listing";
-import ListingContainer from "../pages/ListingContainer";
+import Listing from "../pages/shop/Listing";
+import ListingContainer from "../pages/shop/ListingContainer";
 import {useState, useEffect} from 'react';
 
 function LoadMore() {
@@ -13,7 +13,7 @@ function LoadMore() {
     let listingList = [];
 
     listingList = listings.map((listing) => 
-                <Listing title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}></Listing>)
+                <Listing id={listing.id} title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}></Listing>)
 
     const fetchMore = (page) => {
 

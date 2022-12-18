@@ -1,6 +1,6 @@
 import './App.css';
 import RoutingComponent from './components/routing/RoutingComponent';
-import Shop from './components/pages/Shop';
+import Shop from './components/pages/shop/Shop';
 import LoadMore from './components/routing/LoadMore';
 
 function App() {

@@ -12,3 +12,12 @@
 .Listings {
   margin-left: 20px;
 }
+
+.Listing-button {
+  display: flex;
+  position: sticky;
+  align-self: center;
+  width: auto;
+  margin-top: 132px;
+  margin-left: 90px;
+}

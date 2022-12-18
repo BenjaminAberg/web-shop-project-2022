@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import Listing from './Listing';
-import ListingContainer from './ListingContainer';
+import Listing from '../shop/Listing';
+import ListingContainer from '../shop/ListingContainer';
 import SearchInputForm from './SearchInputForm';
 
 
@@ -12,7 +12,7 @@ function Search() {
     let searchList = [];
 
     searchList = searchListings.map(listing => (
-        <Listing title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}/>
+        <Listing id={listing.id} title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}/>
     ))
 
     const search = (search_term) => {

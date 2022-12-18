@@ -1,6 +1,5 @@
 import {useState} from "react";
 
-
 function AddListingInputForm(props) {
 
     const [title, setTitle] = useState('');

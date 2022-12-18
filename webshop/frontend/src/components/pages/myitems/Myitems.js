@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
-import AddListingInputForm from './AddListingInputForm';
-import Listing from './Listing';
-import ListingContainer from './ListingContainer';
+import AddListingInputForm from '../shop/AddListingInputForm';
+import Listing from '../shop/Listing';
+import ListingContainer from '../shop/ListingContainer';
 
 function Myitems() {
 
@@ -10,7 +10,7 @@ function Myitems() {
     let listingList = [];
 
     listingList = listings.map(listing => (
-        <Listing title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}/>
+        <Listing id={listing.id} title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}/>
     ))
 
     const fetchMyItems = () => {

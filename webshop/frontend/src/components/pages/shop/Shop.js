@@ -9,8 +9,10 @@ function Shop() {
     let listingList = [];
 
     listingList = listings.map(listing => (
-        <Listing title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}/>
+        <Listing id={listing.id} title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}/>
     ));
+
+    console.log(listingList);
 
     const fetchListings = () => {
         console.log("Fetching listings");
@@ -37,7 +39,7 @@ function Shop() {
       <div>
           <div>
             <h3 className='Listings'>All webshop listings:</h3>
-            <ListingContainer key={listingList} listings={listingList}></ListingContainer>
+            <ListingContainer listings={listingList}></ListingContainer>
         </div>
       </div>
     );
