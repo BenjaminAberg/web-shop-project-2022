@@ -162,3 +162,9 @@ class SearchListingsApi(GenericAPIView):
             # queryset is empty
             data = []
         return self.get_paginated_response(data)
+
+
+class GetListingByIdApi(GenericAPIView):
+    
+    def get(self, requqest):
+        return HttpResponse("")

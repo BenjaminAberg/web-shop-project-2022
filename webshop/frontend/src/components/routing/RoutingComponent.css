@@ -17,7 +17,7 @@
 
 .menu-item-right {
     display: flex;
-    position: absolute;
+    position: relative;
     text-align: center;
     padding: 10px;
     width: fit-content;

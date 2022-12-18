@@ -2,10 +2,8 @@
 
 function AddToCart(props) {
 
-    const addToCart = (item_id) => {
-
-        console.log(props);
-        fetch(' http://127.0.0.1:8000/api/cart/add/' + item_id, {
+    const addToCart = (listing_id) => {
+        fetch(' http://127.0.0.1:8000/api/cart/add/' + listing_id, {
             method: 'POST',
             headers: {
                 'Authorization' : 'Token ' + localStorage.getItem("token"),

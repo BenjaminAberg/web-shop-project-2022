@@ -1,3 +1,4 @@
+from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
@@ -6,6 +7,7 @@ from ..listings.serializers import ListingSerializer
 from .serializers import CartSerializer
 from .models import Cart
 from django.http import HttpResponse
+import re
 
 class AddToCartApi(GenericAPIView):
     permission_classes = [IsAuthenticated, ]
@@ -36,7 +38,7 @@ class AddToCartApi(GenericAPIView):
                 return HttpResponse("New cart created. Listing " + str(listing_id) + " successfully added to cart owner " + str(cart.owner))
             
             else:
-                return HttpResponse("Failed to create cart: " + str(serializer.errors, status=400))
+                return HttpResponse("Failed to create cart: " + str(serializer.errors))
 
 class RemoveFromCartApi(GenericAPIView):
     permission_classes = [IsAuthenticated, ]
@@ -56,6 +58,20 @@ class RemoveFromCartApi(GenericAPIView):
         
         except:
             return HttpResponse("Something went wrong")
+
+class GetCartApi(GenericAPIView):
+    permission_classes = [IsAuthenticated, ]
+    authentication_classes = [TokenAuthentication, ]
+
+    def get(self, request):
+        try:
+            cart = Cart.objects.get(owner=self.request.user)
+            listings = str(cart.listings.all())
+            listing_ids = re.findall('\d+', listings)
+            return Response(listing_ids)
+        
+        except:
+            return HttpResponse("Cart does not exist.")
 
 
 class HandlePaymentApi(GenericAPIView):

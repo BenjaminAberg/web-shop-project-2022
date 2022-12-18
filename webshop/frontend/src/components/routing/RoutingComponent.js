@@ -3,6 +3,7 @@ import Login from '../pages/login/Login.js';
 import Logout from '../pages/login/Logout.js';
 import Search from '../pages/search/Search.js';
 import Myitems from '../pages/myitems/Myitems.js';
+import Cart from '../pages/cart/Cart.js';
 import './RoutingComponent.css';
 import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 
@@ -18,12 +19,14 @@ const RoutingComponent = () =>{
                             <NavLink className={"menu-item"} to="/shop/myitems">My items</NavLink>
                             <NavLink className={"menu-item"} to="/shop/logout">Logout</NavLink>
                             <NavLink className={"menu-item-right"} to="/shop/search">Go to search</NavLink>
+                            <NavLink className={"menu-item-right"} to="/shop/cart">View/close cart</NavLink>
                         </div>
                         <Routes>
                             <Route path="/shop"/>
                             <Route path="/shop/myitems" element={<Myitems />} />
                             <Route path="/shop/logout" element={<Logout />} />
                             <Route path="/shop/search" element={<Search />} />
+                            <Route path="/shop/cart" element={<Cart />} />
                         </Routes>
                     </BrowserRouter>
                 </div>
