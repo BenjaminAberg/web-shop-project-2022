@@ -91,11 +91,13 @@ class DeleteCartApi(GenericAPIView):
     permission_classes = [IsAuthenticated, ]
     authentication_classes = [TokenAuthentication, ]
 
-    def delete(self, request, cartid):
-        carts = Cart.objects.get(id=cartid)
-        carts.delete()
-
-        return HttpResponse(carts)
+    def delete(self, request):
+        try:
+            cart = Cart.objects.get(owner=self.request.user)
+            cart.delete()
+            return HttpResponse("Cart deleted")
+        except:
+            return HttpResponse("Cart does not exist")
 
 class HandlePaymentApi(GenericAPIView):
     permission_classes = [IsAuthenticated, ]

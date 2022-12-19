@@ -1,22 +1,25 @@
-
+import RemoveFromCart from "./RemoveFromCart"
 
 function CartListing(props){
     const cStyle = {
-        width: '270px',
-        height: '50px',
-        margin: '15px',
+        display: 'flex',
+        width: '400px',
+        height: '20px',
+        margin: '20px'
     }
     return (
         <div style={cStyle}>
             <Label label={props.title}></Label>
             <PriceTag price={props.price}></PriceTag>
+            <RemoveFromCart id={props.id}></RemoveFromCart>
         </div>
+        
     )
 }
 
 function PriceTag(props){
     const sStyle = {
-        width: '270px',
+        width: '200px',
         height: '20px',
     }
 
@@ -28,10 +31,10 @@ function PriceTag(props){
 
 function Label(props){
     const lStyle = {
-        width: '270px',
-        height: '30px',
+        width: '200px',
+        height: '20px',
     }
-     return <div style={lStyle}><h3>{props.label}</h3></div>
+     return <div style={lStyle}>{props.label}</div>
 }
 
 export default CartListing;

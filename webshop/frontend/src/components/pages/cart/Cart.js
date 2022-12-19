@@ -52,6 +52,7 @@ function Cart(props){
             })
             .catch(err => {
                 console.log("Error: ", err);
+                setCartListings([]);
             })
     }
 
@@ -71,12 +72,27 @@ function Cart(props){
         }
     }
 
-    const deleteListing = (id) => {
-
-    }
-
     const deleteAll = () => {
-
+        fetch(' http://127.0.0.1:8000/api/cart/delete/', {
+            method: 'DELETE',
+            headers: {
+                'Authorization' : 'Token ' + localStorage.getItem("token"),
+                'Content-Type' : 'application/json'
+            },
+        })
+            .then(response => {
+                 if(!response.ok){
+                    throw new Error("http error: " + response.statusCode)
+                }
+                return response.json()
+            })
+            .then( data => {
+                console.log(data);
+                setCartListings([]);
+            })
+            .catch(err => {
+                console.log("Error: ", err);
+            })
     }
 
     console.log(listingList.map(listing => {
@@ -84,7 +100,8 @@ function Cart(props){
 
     return <div>
             <CartListingContainer listings={listingList}></CartListingContainer>
-            <button className="Listing-button" onClick={fetchCart}>Fetch cart</button>
+            <button class='Empty-cart-button' onClick={deleteAll}> Empty cart</button>
+            <button onClick={fetchCart}>Update cart</button>
         </div>
 }
 

@@ -24,5 +24,5 @@ urlpatterns = [
     path('cart/purchase/<int:listing_id>', HandlePaymentApi.as_view()),
     path('cart/remove/<int:listing_id>', RemoveFromCartApi.as_view()),
     path('cart/', GetCartApi.as_view()),  
-    path('cart/delete/<int:cartid>', DeleteCartApi.as_view())
+    path('cart/delete/', DeleteCartApi.as_view())
 ]
