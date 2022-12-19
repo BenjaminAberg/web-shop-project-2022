@@ -5,7 +5,7 @@ function CartListing(props){
         display: 'flex',
         width: '400px',
         height: '20px',
-        margin: '20px'
+        margin: '10px'
     }
     return (
         <div style={cStyle}>

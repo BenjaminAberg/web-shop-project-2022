@@ -25,5 +25,6 @@
 }
 
 .Cart-button {
-  display: flex;
+  display: inline;
+  margin: 10px;
 }
