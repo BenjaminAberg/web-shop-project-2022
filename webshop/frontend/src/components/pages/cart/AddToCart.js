@@ -1,7 +1,5 @@
 
-
 function AddToCart(props) {
-
     const addToCart = (listing_id) => {
         fetch(' http://127.0.0.1:8000/api/cart/add/' + listing_id, {
             method: 'POST',
@@ -11,7 +9,7 @@ function AddToCart(props) {
             },
         })
             .then(response => {
-                 if(!response.ok){
+                if(!response.ok){
                     throw new Error("http error: " + response.statusCode)
                 }
                 return response.json()
@@ -22,10 +20,13 @@ function AddToCart(props) {
             .catch(err => {
                 console.log("Error: ", err);
             })
-
     }
 
-    return <button className="Listing-button" onClick={() => addToCart(props.id)}>Add to cart</button>
+    return(
+        <div>
+            <button className="Listing-button" onClick={() => addToCart(props.id)}>Add to cart</button>
+        </div>
+    )
 }
 
 export default AddToCart;

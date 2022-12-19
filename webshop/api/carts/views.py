@@ -2,12 +2,19 @@ from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.pagination import PageNumberPagination
 from ..listings.models import Listing
 from ..listings.serializers import ListingSerializer
 from .serializers import CartSerializer
 from .models import Cart
 from django.http import HttpResponse
-import re
+
+
+class CartPagination(PageNumberPagination):
+    page_size = 100
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
 
 class AddToCartApi(GenericAPIView):
     permission_classes = [IsAuthenticated, ]
@@ -62,17 +69,33 @@ class RemoveFromCartApi(GenericAPIView):
 class GetCartApi(GenericAPIView):
     permission_classes = [IsAuthenticated, ]
     authentication_classes = [TokenAuthentication, ]
+    pagination_class = CartPagination
 
     def get(self, request):
         try:
             cart = Cart.objects.get(owner=self.request.user)
-            listings = str(cart.listings.all())
-            listing_ids = re.findall('\d+', listings)
-            return Response(listing_ids)
-        
+            listings = cart.listings.all()
+
+            page = self.paginate_queryset(listings)
+            if page:
+                serializer = ListingSerializer(page, many=True)
+                data = serializer.data
+            else:
+                data = []
+            return self.get_paginated_response(data)
+    
         except:
             return HttpResponse("Cart does not exist.")
 
+class DeleteCartApi(GenericAPIView):
+    permission_classes = [IsAuthenticated, ]
+    authentication_classes = [TokenAuthentication, ]
+
+    def delete(self, request, cartid):
+        carts = Cart.objects.get(id=cartid)
+        carts.delete()
+
+        return HttpResponse(carts)
 
 class HandlePaymentApi(GenericAPIView):
     permission_classes = [IsAuthenticated, ]

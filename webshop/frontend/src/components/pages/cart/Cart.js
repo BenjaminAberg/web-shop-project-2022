@@ -1,4 +1,6 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import CartListing from "./CartListing";
+import CartListingContainer from "./CartListingContainer";
 
 function Cart(props){
 
@@ -23,6 +25,14 @@ function Cart(props){
     const [cartStyle, setCartStyle] = useState(styleHidden);
     const [cartListings, setCartListings] = useState([])
 
+    let listingList = [];
+
+    listingList = cartListings.map(listing => (
+        <CartListing id={listing.id} title={listing.title} price={listing.price}/>
+    ));
+
+    console.log(listingList);
+
     const fetchCart = () => {
         fetch(' http://127.0.0.1:8000/api/cart/', {
             method: 'GET',
@@ -38,13 +48,17 @@ function Cart(props){
                 return response.json()
             })
             .then( data => {
-                console.log(data)
-                setCartListings(data)
+                setCartListings(data.results);
             })
             .catch(err => {
                 console.log("Error: ", err);
             })
     }
+
+    useEffect(() =>{
+        console.log("App changed");
+        fetchCart();
+    }, [])
 
     const hideHandler = (e) => {
         if (hide === false){
@@ -65,11 +79,13 @@ function Cart(props){
 
     }
 
-    return (
-        <div>
-            <button onClick={fetchCart}>Fetch cart</button>
+    console.log(listingList.map(listing => {
+        return(listing.id, listing.title, listing.price)}))
+
+    return <div>
+            <CartListingContainer listings={listingList}></CartListingContainer>
+            <button className="Listing-button" onClick={fetchCart}>Fetch cart</button>
         </div>
-    )
 }
 
 export default Cart;

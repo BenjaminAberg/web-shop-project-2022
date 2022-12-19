@@ -30,6 +30,11 @@ GET http://localhost:8000/api/cart/
 Authorization: Token 0627ccdc6fb21ad86844e8eb4a300b161af5237c
 Content-Type: application/json
 
+###
+
+DELETE http://localhost:8000/api/cart/delete/17
+Authorization: Token 0627ccdc6fb21ad86844e8eb4a300b161af5237c
+Content-Type: application/json
 
 ###
 POST http://localhost:8000/api/cart/add/33
@@ -37,7 +42,7 @@ Authorization: Token 0627ccdc6fb21ad86844e8eb4a300b161af5237c
 Content-Type: application/json
 
 ###
-DELETE http://localhost:8000/api/cart/remove/33
+DELETE http://localhost:8000/api/cart/remove/34
 Authorization: Token 0627ccdc6fb21ad86844e8eb4a300b161af5237c
 Content-Type: application/json
 

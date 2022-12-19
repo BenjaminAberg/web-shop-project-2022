@@ -164,7 +164,11 @@ class SearchListingsApi(GenericAPIView):
         return self.get_paginated_response(data)
 
 
-class GetListingByIdApi(GenericAPIView):
-    
-    def get(self, requqest):
-        return HttpResponse("")
+class GetListingByIdApi(GenericAPIView): 
+
+    def get(self, request, listing_id):
+        
+        listing = Listing.objects.get(id=listing_id)
+        serializer = ListingSerializer(listing)
+        
+        return Response(serializer.data)
