@@ -1,7 +1,9 @@
 import {useState, useEffect} from 'react';
+import { Navigate } from 'react-router';
 import AddListingInputForm from '../shop/AddListingInputForm';
 import ListingContainer from '../shop/ListingContainer';
 import InactiveListing from './InactiveListing';
+
 
 function Myitems() {
 
@@ -132,6 +134,9 @@ function Myitems() {
             .catch(response => {
                 console.log("Error: ", response.status, response.statusText);
          })
+
+         window.location.reload(true);
+         return <Navigate replace to={"/myitems"}></Navigate>
     }
 
     return (

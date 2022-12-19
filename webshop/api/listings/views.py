@@ -229,3 +229,12 @@ class SoldListingsApi(GenericAPIView):
             data = []
         return self.get_paginated_response(data)
 
+class GetListingPriceApi(GenericAPIView):
+    def get(self, request, listing_id):
+        try:
+            listing_price = Listing.objects.get(id=listing_id).price
+            return Response(listing_price)
+        except:
+            return HttpResponse("Listing does not exist.")
+
+

@@ -108,7 +108,7 @@ class HandlePaymentApi(GenericAPIView):
     permission_classes = [IsAuthenticated, ]
     authentication_classes = [TokenAuthentication, ]
 
-    def post(self, request, listing_id):
+    def post(self, request, listing_id, price):
         
         listing = Listing.objects.get(id=listing_id)
         cart = Cart.objects.get(owner=self.request.user)
@@ -116,14 +116,18 @@ class HandlePaymentApi(GenericAPIView):
         serializer = ListingSerializer(listing, data=data)
         
         if not listing.sold and serializer.is_valid():
-            serializer.validated_data['buyer'] = self.request.user
-            serializer.validated_data['sold'] = 1
-            serializer.save()
-            cart.listings.remove(listing)
+            if listing.price == price:
+                serializer.validated_data['buyer'] = self.request.user
+                serializer.validated_data['sold'] = 1
+                serializer.save()
+                cart.listings.remove(listing)
+            
+            else:
+                return HttpResponse("Price updated, new price: " + str(listing.price), status=406)
             
             if cart.listings.count() == 0:
                 cart.delete()
 
             return HttpResponse("Listing " + str(listing_id) + " purchased by " + str(self.request.user))
         else:
-            return HttpResponse("Listing " + str(listing_id) + " already sold.")
+            return HttpResponse("Listing " + str(listing_id) + " already sold.", status=400)

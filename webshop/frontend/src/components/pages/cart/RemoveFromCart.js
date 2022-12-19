@@ -13,7 +13,7 @@ function RemoveFromCart(props) {
                 if(!response.ok){
                     throw new Error("http error: " + response.statusCode)
                 }
-                return response.json()
+                return response
             })
             .then( data => {
                 console.log(data)

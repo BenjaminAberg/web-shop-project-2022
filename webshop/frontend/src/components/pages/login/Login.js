@@ -36,7 +36,10 @@ function Login() {
             })
     }
 
-    if (logged_in) return <Navigate replace to={"/shop"}></Navigate>
+    if (logged_in) {
+        window.location.reload(true);
+        return <Navigate replace to={"/shop"}></Navigate>
+    }
     
     else return (
         <div>

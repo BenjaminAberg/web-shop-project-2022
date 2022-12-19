@@ -34,7 +34,10 @@ function Register() {
          })
     }
 
-    if (registered) return <Navigate replace to={"/shop/login"}></Navigate>
+    if (registered) {
+        window.location.reload(true);
+        return <Navigate replace to={"/shop/login"}></Navigate>
+    } 
 
     else return (
         <div>
