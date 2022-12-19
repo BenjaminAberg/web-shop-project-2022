@@ -18,6 +18,11 @@ class ListingSetPagination(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 100
 
+class BoughtAndSoldListingSetPagination(PageNumberPagination):
+    page_size = 100
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
 class AddListingForm(View):
     permission_classes = [IsAuthenticated, ]
     authentication_classes = [TokenAuthentication, ]
@@ -123,7 +128,7 @@ class ListOwnItemsApi(GenericAPIView):
         own_listings = []
 
         for listing in listings:
-            if listing.owner == self.request.user:
+            if listing.sold == False and listing.owner == self.request.user:
                 own_listings.append(listing)
 
         page = self.paginate_queryset(own_listings)
@@ -172,3 +177,55 @@ class GetListingByIdApi(GenericAPIView):
         serializer = ListingSerializer(listing)
         
         return Response(serializer.data)
+
+
+class BoughtListingsApi(GenericAPIView):
+    permission_classes = [IsAuthenticated, ]
+    authentication_classes = [TokenAuthentication, ]
+    pagination_class = BoughtAndSoldListingSetPagination
+
+    def get(self, request):
+
+        listings = Listing.objects.all()
+        bought_listings = []
+
+        for listing in listings:
+            if listing.buyer == self.request.user:
+                bought_listings.append(listing)
+
+        page = self.paginate_queryset(bought_listings)
+
+        if page:
+            # queryset is not empty
+            serializer = ListingSerializer(page, many=True)
+            data = serializer.data
+        else:
+            # queryset is empty
+            data = []
+        return self.get_paginated_response(data)
+
+class SoldListingsApi(GenericAPIView):
+    permission_classes = [IsAuthenticated, ]
+    authentication_classes = [TokenAuthentication, ]
+    pagination_class = BoughtAndSoldListingSetPagination
+
+    def get(self, request):
+
+        listings = Listing.objects.all()
+        sold_listings = []
+
+        for listing in listings:
+            if listing.sold == True and listing.owner == self.request.user:
+                sold_listings.append(listing)
+
+        page = self.paginate_queryset(sold_listings)
+
+        if page:
+            # queryset is not empty
+            serializer = ListingSerializer(page, many=True)
+            data = serializer.data
+        else:
+            # queryset is empty
+            data = []
+        return self.get_paginated_response(data)
+

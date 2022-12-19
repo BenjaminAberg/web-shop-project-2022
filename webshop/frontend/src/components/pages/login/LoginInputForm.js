@@ -18,7 +18,7 @@ function LoginInputForm(props){
 
 
     return (
-        <div>
+        <div className="Listings">
             <label>
                 Username:  <input type='text' value={user} onChange={updateUValue}/>
                 Password:  <input type='password' value={pass} onChange={updatePValue}/>

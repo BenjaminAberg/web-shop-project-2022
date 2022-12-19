@@ -22,7 +22,7 @@ function RegisterInputForm(props){
     }
 
     return (
-        <div>
+        <div className="Listings">
             <label>
                 Email:  <input type='text' value={email} onChange={updateEValue}/>
                 Username:  <input type='text' value={user} onChange={updateUValue}/>

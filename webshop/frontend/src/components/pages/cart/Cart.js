@@ -4,25 +4,6 @@ import CartListingContainer from "./CartListingContainer";
 
 function Cart(props){
 
-    const styleHidden={
-        backgroundColor:' yellow',
-        border: '1px solid black',
-        width: '20vw',
-        maxWidth:'300px',
-        minWidth: '200px',
-    }
-
-    const styleView={
-        backgroundColor:' green',
-        border: '1px solid black',
-        width: '20vw',
-        maxWidth:'300px',
-        minWidth: '200px',
-        height: '100px'
-    }
-
-    const [hide, setHide] = useState(true);
-    const [cartStyle, setCartStyle] = useState(styleHidden);
     const [cartListings, setCartListings] = useState([])
 
     let listingList = [];
@@ -61,17 +42,6 @@ function Cart(props){
         fetchCart();
     }, [])
 
-    const hideHandler = (e) => {
-        if (hide === false){
-            setHide(true);
-            setCartStyle(styleHidden);
-        }
-        else {
-            setHide(false);
-            setCartStyle(styleView);
-        }
-    }
-
     const deleteAll = () => {
         fetch(' http://127.0.0.1:8000/api/cart/delete/', {
             method: 'DELETE',
@@ -95,14 +65,19 @@ function Cart(props){
             })
     }
 
-    console.log(listingList.map(listing => {
-        return(listing.id, listing.title, listing.price)}))
-
-    return <div>
-            <CartListingContainer listings={listingList}></CartListingContainer>
-            <button class='Empty-cart-button' onClick={deleteAll}> Empty cart</button>
-            <button onClick={fetchCart}>Update cart</button>
-        </div>
+    if (cartListings.length === 0) {
+        return <div className="Listings">
+                    <h5>You currently don't have any items in the cart.</h5>
+                    <button onClick={fetchCart}>Update cart</button>    
+                </div>
+    }
+    else { 
+        return <div>
+                    <CartListingContainer listings={listingList}></CartListingContainer>
+                    <button class='Cart-button' onClick={deleteAll}> Empty cart</button>
+                    <button onClick={fetchCart}>Update cart</button>
+                </div>
+    }    
 }
 
 export default Cart;

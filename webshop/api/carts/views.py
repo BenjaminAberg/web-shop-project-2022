@@ -41,8 +41,13 @@ class AddToCartApi(GenericAPIView):
                 serializer.save()
                 cart = Cart.objects.get(owner=self.request.user)
                 listing = Listing.objects.get(id=listing_id)
-                cart.listings.add(listing)
-                return HttpResponse("New cart created. Listing " + str(listing_id) + " successfully added to cart owner " + str(cart.owner))
+
+                if not listing.owner == cart.owner:
+                    cart.listings.add(listing)
+                    return HttpResponse("New cart created. Listing " + str(listing_id) + " successfully added to cart owner " + str(cart.owner))
+                
+                else:
+                    return HttpResponse("Listing cannot be bought by its owner.")
             
             else:
                 return HttpResponse("Failed to create cart: " + str(serializer.errors))

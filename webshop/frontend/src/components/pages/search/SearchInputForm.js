@@ -9,7 +9,7 @@ function SearchInputForm(props){
     }
 
     return (
-        <div>
+        <div className="Listings">
             <label>
                 Search webshop:  <input type='text' value={search} onChange={updateSearch}/>
             </label>

@@ -10,7 +10,9 @@
 }
 
 .Listings {
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .Listing-button {
@@ -22,6 +24,6 @@
   margin-left: 90px;
 }
 
-.Empty-cart-button {
+.Cart-button {
   display: flex;
 }

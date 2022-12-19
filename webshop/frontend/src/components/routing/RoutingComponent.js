@@ -19,7 +19,7 @@ const RoutingComponent = () =>{
                             <NavLink className={"menu-item"} to="/shop/myitems">My items</NavLink>
                             <NavLink className={"menu-item"} to="/shop/logout">Logout</NavLink>
                             <NavLink className={"menu-item-right"} to="/shop/search">Go to search</NavLink>
-                            <NavLink className={"menu-item-right"} to="/shop/cart">View/close cart</NavLink>
+                            <NavLink className={"menu-item-right"} to="/shop/cart" >View cart</NavLink>
                         </div>
                         <Routes>
                             <Route path="/shop"/>

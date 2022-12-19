@@ -2,7 +2,7 @@ from django.urls import path
 from django.views.generic import TemplateView
 from django.contrib.auth import views as auth_view
 from .views import index
-from .listings.views import ListListingsApi, AddListingApi, DeleteListingApi, EditListingApi, ListOwnItemsApi, SearchListingsApi, GetListingByIdApi
+from .listings.views import ListListingsApi, AddListingApi, DeleteListingApi, EditListingApi, ListOwnItemsApi, SearchListingsApi, GetListingByIdApi, BoughtListingsApi, SoldListingsApi
 from .carts.views import HandlePaymentApi, AddToCartApi, RemoveFromCartApi, GetCartApi, DeleteCartApi
 from .accounts.views import RegisterApiView, LoginApiView, GetUserView
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -18,6 +18,8 @@ urlpatterns = [
     path('myitems/addlisting/', AddListingApi.as_view(), name="addlisting"),
     path('myitems/deletelisting/<int:listing_id>', DeleteListingApi.as_view(), name="deletelisting"),
     path('myitems/editlisting/<int:listing_id>', EditListingApi.as_view(), name="editlisting"),
+    path('myitems/purchased/', BoughtListingsApi.as_view()),
+    path('myitems/sold/', SoldListingsApi.as_view()),
     path('signup/', RegisterApiView.as_view()),
     path('login/', obtain_auth_token),
     path('cart/add/<int:listing_id>', AddToCartApi.as_view()),
