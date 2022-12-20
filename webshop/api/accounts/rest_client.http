@@ -71,24 +71,24 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:8000/login/
+POST http://localhost:8000/api/login/
 Content-Type: application/json
 
 {
-  "username": "sven",
-  "password": "sven"
+  "username": "test8",
+  "password": "test8"
 }
 
 ###
 
-POST http://localhost:8000/myitems/addlisting/
+POST http://localhost:8000/api/myitems/addlisting/
 Authorization: Token b72c4249f321f71e9a1dfa362316d6203aef1158
 Content-Type: application/json
 
 {
-  "title": "Used bed",
-  "description": "some stains",
-  "price": 30
+  "title": "Kitchen oven",
+  "description": "working condition",
+  "price": 50
 }
 
 ###

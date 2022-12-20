@@ -123,7 +123,11 @@ class HandlePaymentApi(GenericAPIView):
                 cart.listings.remove(listing)
 
                 # Send email: requirement 10 d.
-                print("EMAIL: to: " + str(listing.owner.email) + ", Your listing " + str(listing.title) + " was purchased by " + str(self.request.user))
+                print("EMAIL to seller: " + str(listing.owner.email) 
+                + ", Your listing " + str(listing.title) + " was purchased by " + str(self.request.user))
+
+                print("EMAIL to buyer: " + str(self.request.user.email) 
+                + ", You purchased item: " + str(listing.title) + " from seller " + str(listing.owner.username))
             
             else:
                 return HttpResponse("Price updated, new price: " + str(listing.price), status=406)
