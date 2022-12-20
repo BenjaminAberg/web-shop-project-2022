@@ -1,0 +1,191 @@
+{
+    "listings": [
+        {
+            "user1": [
+                {
+                    "title": "Sofa",
+                    "description": "Slightly worn",
+                    "price": 60
+                },
+
+                {
+                    "title": "Table",
+                    "description": "Wooden table, fairly worn",
+                    "price": 30
+                },
+
+                {
+                    "title": "Glass table",
+                    "description": "In good condition",
+                    "price": 50
+                },
+
+                {
+                    "title": "Wooden chest",
+                    "description": "Classic chest from the 50's",
+                    "price": 40
+                },
+
+                {
+                    "title": "Old television",
+                    "description": "Working condition",
+                    "price": 15
+                },
+
+                {
+                    "title": "Used phone",
+                    "description": "Cracked screen",
+                    "price": 40
+                },
+
+                {
+                    "title": "Coffee maker",
+                    "description": "Like new",
+                    "price": 40
+                },
+
+                {
+                    "title": "Kitchen oven",
+                    "description": "10 years old but in good condition",
+                    "price": 30
+                },
+
+                {
+                    "title": "Wooden boat",
+                    "description": "5m long, engine not included",
+                    "price": 300
+                },
+
+                {
+                    "title": "Volvo engine",
+                    "description": "B6304S engine from a Volvo 960",
+                    "price": 200
+                }
+            ],
+
+            "user2": [
+                {
+                    "title": "Apples",
+                    "description": "Selling buckets of apples, price per each",
+                    "price": 10
+                },
+
+                {
+                    "title": "Old jacket",
+                    "description": "Used but in good condition",
+                    "price": 20
+                },
+
+                {
+                    "title": "Ford Fiesta",
+                    "description": "304k km on the clock, slight rust",
+                    "price": 700
+                },
+
+                {
+                    "title": "Fender Stratocaster",
+                    "description": "Electric guitar from the 70's",
+                    "price": 1400
+                },
+
+                {
+                    "title": "Laptop",
+                    "description": "Old ThinkPad",
+                    "price": 60
+                },
+
+                {
+                    "title": "Wooden chairs",
+                    "description": "Four old chairs",
+                    "price": 20
+                },
+
+                {
+                    "title": "Old bed",
+                    "description": "Used but gets the job done",
+                    "price": 20
+                },
+
+                {
+                    "title": "Volvo wheels",
+                    "description": "Volvo Arrakis 17 inch wheels",
+                    "price": 300
+                },
+
+                {
+                    "title": "Pillows",
+                    "description": "Selling new pillows",
+                    "price": 20
+                },
+
+                {
+                    "title": "Flowers",
+                    "description": "Selling flowers from my yard",
+                    "price": 5
+                }
+            ],
+
+            "user3": [
+                {
+                    "title": "Toyota Hiace",
+                    "description": "Old but gold",
+                    "price": 7000
+                },
+
+                {
+                    "title": "Volvo 960",
+                    "description": "164k km on the clock",
+                    "price": 5000
+                },
+
+                {
+                    "title": "Piano",
+                    "description": "Old piano",
+                    "price": 100
+                },
+
+                {
+                    "title": "Gloves",
+                    "description": "Leather winter gloves",
+                    "price": 10
+                },
+
+                {
+                    "title": "Working shoes",
+                    "description": "Brand new condition",
+                    "price": 50
+                },
+
+                {
+                    "title": "Speakers",
+                    "description": "Working speakers",
+                    "price": 80
+                },
+
+                {
+                    "title": "Car stereo",
+                    "description": "Unknown brand, working condition",
+                    "price": 10
+                },
+
+                {
+                    "title": "Acoustic guitar",
+                    "description": "Yamaha acoustic from 2001",
+                    "price": 70
+                },
+
+                {
+                    "title": "Old whisky bottle",
+                    "description": "From the 30's",
+                    "price": 60
+                },
+
+                {
+                    "title": "Vinyl player",
+                    "description": "Working but used",
+                    "price": 80
+                }
+            ]
+        }
+    ]
+}

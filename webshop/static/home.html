@@ -5,16 +5,17 @@
     <title>Webshop</title>
 </head>
 <body>
-<h1>Welcome to the webshop landing page!</h1><br/><br/>
+    <h1>Welcome to the webshop landing page!</h1><br/><br/>
 
-<h2>There are currently {{ num_listings }} listings in the webshop.</h2>
-<button onclick={flushDatabase}><h3>Delete all items and generate 6 new users and 30 new items</h3></button><br/><br/>
+    <h2>There are currently {{ num_listings }} listings in the webshop.</h2>
 
-<h2>By going to the shop you accept our terms and conditions.</h2>
+    <h3><a href="/flush">Delete all items and generate 6 new users and 30 new items</a></h3>
 
-<form action="/shop/">
-    <input type="submit" value="Go to shop" />
-</form>
+    <h3><i><p style="color:rgb(31, 215, 31);">{{ response }}</p></i></h3><br/><br/>
+
+    <h2>By going to the shop you accept our terms and conditions.</h2>
+
+    <h3><a href="/shop">Go to webshop</a></h3><br/><br/>
 
 </body>
 </html>

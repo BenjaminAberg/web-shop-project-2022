@@ -1,13 +1,13 @@
 
 # FOR TESTING PURPOSES
 
-POST http://localhost:8000/signup/
+POST http://localhost:8000/api/signup/
 Content-Type: application/json
 
 {
-  "username": "test9",
-  "email": "test9@asd.com",
-  "password": "test9"
+  "username": "test1",
+  "email": "test1@asd.com",
+  "password": "test1"
 }
 
 ###
