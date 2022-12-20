@@ -38,7 +38,7 @@ const RoutingComponent = () =>{
                 <BrowserRouter>
                     <div className={"App"} >
                         <NavLink className={"menu-item"} to="/shop">Home</NavLink>
-                        <NavLink className={"menu-item"} to="/shop/register">Register</NavLink>
+                        <NavLink className={"menu-item"} to="/shop/signup">Register</NavLink>
                         <NavLink className={"menu-item"} to="/shop/login">Login</NavLink>
                         <NavLink className={"menu-item-right"} to="/shop/search">Go to search</NavLink>
                     </div>
@@ -47,7 +47,7 @@ const RoutingComponent = () =>{
                     </div>
                     <Routes>
                         <Route path="/shop"/>
-                        <Route path="/shop/register" element={<Register />} />
+                        <Route path="/shop/signup" element={<Register />} />
                         <Route path="/shop/login" element={<Login />} />
                         <Route path="/shop/search" element={<Search />} />
                     </Routes>

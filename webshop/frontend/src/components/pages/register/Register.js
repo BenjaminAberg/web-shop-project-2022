@@ -35,7 +35,6 @@ function Register() {
     }
 
     if (registered) {
-        window.location.reload(true);
         return <Navigate replace to={"/shop/login"}></Navigate>
     } 
 

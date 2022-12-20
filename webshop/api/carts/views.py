@@ -121,6 +121,9 @@ class HandlePaymentApi(GenericAPIView):
                 serializer.validated_data['sold'] = 1
                 serializer.save()
                 cart.listings.remove(listing)
+
+                # Send email: requirement 10 d.
+                print("EMAIL: to: " + str(listing.owner.email) + ", Your listing " + str(listing.title) + " was purchased by " + str(self.request.user))
             
             else:
                 return HttpResponse("Price updated, new price: " + str(listing.price), status=406)
