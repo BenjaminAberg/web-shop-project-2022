@@ -16,7 +16,7 @@ def register_users():
         if serializer.is_valid():
             serializer.save()
 
-    first_user = User.objects.get(username="test1")
+    first_user = User.objects.get(username="testuser1")
     starting_index = first_user.id
 
     data = open(os.path.join(path_here, "listings.json"))
@@ -32,6 +32,6 @@ def register_users():
                 serializer.validated_data['owner'] = User.objects.get(id=starting_index + iteration)
                 serializer.save()
     
-    return "30 listings for user1, user2 and user3 successfully generated!"
+    return "30 listings for testuser1, testuser2 and testuser3 successfully generated!"
             
 

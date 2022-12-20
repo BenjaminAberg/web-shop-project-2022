@@ -1,39 +1,39 @@
 {
     "users": [
         {
-            "username": "test1",
-            "email": "test1@asd.com",
-            "password": "test1"
+            "username": "testuser1",
+            "email": "testuser1@shop.aa",
+            "password": "pass1"
         },
 
         {
-            "username": "test2",
-            "email": "test2@asd.com",
-            "password": "test2"
+            "username": "testuser2",
+            "email": "testuser2@shop.aa",
+            "password": "pass2"
         },
 
         {
-            "username": "test3",
-            "email": "test3@asd.com",
-            "password": "test3"
+            "username": "testuser3",
+            "email": "testuser3@shop.aa",
+            "password": "pass3"
         },
 
         {
-            "username": "test4",
-            "email": "test4@asd.com",
-            "password": "test4"
+            "username": "testuser4",
+            "email": "testuser4@shop.aa",
+            "password": "pass4"
         },
 
         {
-            "username": "test5",
-            "email": "test5@asd.com",
-            "password": "test5"
+            "username": "testuser5",
+            "email": "testuser5@shop.aa",
+            "password": "pass5"
         },
 
         {
-            "username": "test6",
-            "email": "test6@asd.com",
-            "password": "test6"
+            "username": "testuser5",
+            "email": "testuser5@shop.aa",
+            "password": "pass5"
         }
     ]
 }
