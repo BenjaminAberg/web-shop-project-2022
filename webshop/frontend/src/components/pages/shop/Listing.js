@@ -25,11 +25,11 @@ function Square(props){
 
     if (localStorage.getItem("token") !== null) {
         return (<div style={sStyle}>
-                    <b>Description:&nbsp;</b><i>{props.description}</i><br></br>
-                    <b>Price:&nbsp;</b><i>{props.price}€</i><br></br>
-                    <b>Created at:&nbsp;</b><i>{props.created_at}</i><br></br>
-                    <AddToCart id={props.id}></AddToCart>
-                </div>
+                <b>Description:&nbsp;</b><i>{props.description}</i><br></br>
+                <b>Price:&nbsp;</b><i>{props.price}€</i><br></br>
+                <b>Created at:&nbsp;</b><i>{props.created_at}</i><br></br>
+                <AddToCart id={props.id}></AddToCart>
+            </div>
         )
     } else {
         return (<div style={sStyle}>

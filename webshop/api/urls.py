@@ -1,7 +1,7 @@
 from django.urls import path
 from .listings.views import ListListingsApi, AddListingApi, DeleteListingApi, EditListingApi, ListOwnItemsApi, SearchListingsApi, GetListingByIdApi, BoughtListingsApi, SoldListingsApi, GetListingPriceApi
 from .carts.views import HandlePaymentApi, AddToCartApi, RemoveFromCartApi, GetCartApi, DeleteCartApi
-from .accounts.views import RegisterApiView, GetUserView
+from .accounts.views import RegisterApiView, LoginApiView, GetUserView
 from django.urls import path
 from rest_framework.authtoken.views import obtain_auth_token
 

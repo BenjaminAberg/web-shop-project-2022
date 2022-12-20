@@ -31,7 +31,7 @@ class AddToCartApi(GenericAPIView):
                 return HttpResponse("Listing " + str(listing_id) + " successfully added to cart owner" + str(cart.owner))
             
             else:
-                return HttpResponse("Listing cannot be bought by its owner.")
+                return HttpResponse("Listing cannot be bought by its owner.", status=403)
         
         except:
             serializer = CartSerializer(data=request.data)
@@ -47,7 +47,7 @@ class AddToCartApi(GenericAPIView):
                     return HttpResponse("New cart created. Listing " + str(listing_id) + " successfully added to cart owner " + str(cart.owner))
                 
                 else:
-                    return HttpResponse("Listing cannot be bought by its owner.")
+                    return HttpResponse("Listing cannot be bought by its owner.", status=403)
             
             else:
                 return HttpResponse("Failed to create cart: " + str(serializer.errors))

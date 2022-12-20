@@ -21,6 +21,7 @@ function AddToCart(props) {
             })
             .catch(err => {
                 console.log("Error: ", err);
+                alert("You cannot add your own listing to the cart.")
             })
     }
 

@@ -27,7 +27,7 @@ function Login() {
             })
             .then( data => {
                 console.log("data ", data);
-                localStorage.setItem("token", data.token)
+                localStorage.setItem("token", data.token);
                 setLogged_in(true);
             })
             .catch(err => {
