@@ -13,13 +13,13 @@ POST http://localhost:8000/api/login/
 Content-Type: application/json
 
 {
-  "username": "test7",
-  "password": "test7"
+  "username": "test8",
+  "password": "test8"
 }
 
 ###
 
-POST http://localhost:8000/api/cart/purchase/29/10
+POST http://localhost:8000/api/cart/purchase/46/100
 Authorization: Token b72c4249f321f71e9a1dfa362316d6203aef1158
 Content-Type: application/json
 
@@ -48,7 +48,7 @@ Authorization: Token 0627ccdc6fb21ad86844e8eb4a300b161af5237c
 Content-Type: application/json
 
 ###
-POST http://localhost:8000/api/cart/add/29
+POST http://localhost:8000/api/cart/add/46
 Authorization: Token b72c4249f321f71e9a1dfa362316d6203aef1158
 Content-Type: application/json
 
@@ -59,14 +59,14 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:8000/api/myitems/editlisting/28
-Authorization: Token 5aca8ffdc761a906df40f3ee352a68403a659de0
+PUT http://localhost:8000/api/myitems/editlisting/47
+Authorization: Token 0627ccdc6fb21ad86844e8eb4a300b161af5237c
 Content-Type: application/json
 
 {
-  "title": "Table",
-  "description": "Good condition",
-  "price": 120
+  "title": "Drinkware",
+  "description": "glass drinkware",
+  "price": 15.0
 }
 
 ###
