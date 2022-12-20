@@ -33,13 +33,3 @@ class LoginSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Incorrect username and/or password.")
-
-
-
-# class RegisterUserSerializer(serializers.Serializer):
-#     username = serializers.CharField(
-#         max_length=150,
-#         required=True
-#     )
-#     email = serializers.EmailField(required=True)
-#     password = serializers.CharField(write_only=True)

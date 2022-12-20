@@ -3,7 +3,7 @@ import Listing from '../shop/Listing';
 import ListingContainer from '../shop/ListingContainer';
 import SearchInputForm from './SearchInputForm';
 
-
+// Handle search functionality
 function Search() {
 
     const [searchListings, setSearch] = useState([]);
@@ -15,6 +15,7 @@ function Search() {
         <Listing id={listing.id} title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}/>
     ))
 
+    // Fetch items containing search term in title
     const search = (search_term) => {
         fetch(' http://127.0.0.1:8000/api/search/' + search_term, {
             method: 'GET',

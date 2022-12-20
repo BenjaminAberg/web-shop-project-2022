@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-
+// Register input fields
 function RegisterInputForm(props){
 
     const [user, setUser] = useState('');

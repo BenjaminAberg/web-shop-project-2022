@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {Navigate} from 'react-router-dom';
 import LoginInputForm from './LoginInputForm';
 
-
+// Handle login functionality
 function Login() {
 
     const [logged_in, setLogged_in] = useState(false);

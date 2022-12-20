@@ -1,4 +1,5 @@
 
+// Remove from cart functionality
 
 function RemoveFromCart(props) {
     const removeFromCart = (listing_id) => {

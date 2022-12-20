@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import CartListing from "./CartListing";
 import CartListingContainer from "./CartListingContainer";
 
+// Shopping cart functionality
 
 function Cart(props){
 
@@ -20,6 +21,7 @@ function Cart(props){
 
     cartTotal = cartTotal.reduce((a, b) => a + b, 0);
 
+    // Fetch user cart from backend
     const fetchCart = () => {
         fetch(' http://127.0.0.1:8000/api/cart/', {
             method: 'GET',
@@ -48,6 +50,7 @@ function Cart(props){
         fetchCart();
     }, [])
 
+    // Remove all items from cart
     const deleteAll = () => {
         fetch(' http://127.0.0.1:8000/api/cart/delete/', {
             method: 'DELETE',
@@ -71,6 +74,7 @@ function Cart(props){
             })
     }
 
+    // POST purchase to backend
     async function finalizeTransaction(listing_ids, listing_prices) {
 
         let errors = [];
@@ -101,6 +105,7 @@ function Cart(props){
         }
     }
 
+    // "Handle payment": check listing availability and price changes
     async function handlePayment() {
 
         let listing_ids = [];

@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {Navigate} from 'react-router-dom';
 import RegisterInputForm from './RegisterInputForm';
 
+// Register new user functionality
 function Register() {
 
     const [registered, setRegistered] = useState(false);

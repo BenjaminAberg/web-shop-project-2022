@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-
+// Login fields
 function LoginInputForm(props){
 
     const [user, setUser] = useState('');

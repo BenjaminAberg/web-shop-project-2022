@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import Listing from './Listing';
 import ListingContainer from './ListingContainer';
 
+// Handle frontpage at "/shop"
 function Shop() {
 
     const [listings, setListings] = useState([]);
@@ -12,8 +13,7 @@ function Shop() {
         <Listing id={listing.id} title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}/>
     ));
 
-    console.log(listingList);
-
+    // Fetch all listings currently available
     const fetchListings = () => {
         console.log("Fetching listings");
         fetch('http://127.0.0.1:8000/api/listings')

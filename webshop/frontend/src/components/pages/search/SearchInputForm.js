@@ -1,5 +1,6 @@
 import {useState} from "react";
 
+// Search text field
 function SearchInputForm(props){
 
     const [search, setSearch] = useState('');

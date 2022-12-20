@@ -7,6 +7,7 @@ import Cart from '../pages/cart/Cart.js';
 import './RoutingComponent.css';
 import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 
+// Handle top menu bar
 const RoutingComponent = () =>{
 
     if (localStorage.getItem("token") !== null) {

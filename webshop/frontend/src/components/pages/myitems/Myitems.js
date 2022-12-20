@@ -4,7 +4,7 @@ import AddListingInputForm from '../shop/AddListingInputForm';
 import ListingContainer from '../shop/ListingContainer';
 import InactiveListing from './InactiveListing';
 
-
+// Own listings functionality
 function Myitems() {
 
     const [listings, setListings] = useState([]);
@@ -27,6 +27,7 @@ function Myitems() {
         <InactiveListing id={listing.id} title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}/>
     ))
 
+    // Fetch own listings from API
     const fetchMyItems = () => {
         fetch('http://127.0.0.1:8000/api/myitems/', {
             method: 'GET',
@@ -52,6 +53,7 @@ function Myitems() {
         console.log("Fetching own listings DONE");
     }
 
+    // Fetch own sold listings from API
     const fetchSoldItems = () => {
         fetch('http://127.0.0.1:8000/api/myitems/sold/', {
             method: 'GET',
@@ -77,6 +79,7 @@ function Myitems() {
         console.log("Fetching own listings DONE");
     }
 
+    // Fetch own bought listings from API
     const fetchBoughtItems = () => {
         fetch('http://127.0.0.1:8000/api/myitems/purchased/', {
             method: 'GET',
@@ -109,6 +112,7 @@ function Myitems() {
         fetchBoughtItems();
     }, [])
 
+    // Handle add listing functionality
     const addListing = (addTitle, addDescription, addPrice) => {
         fetch(' http://127.0.0.1:8000/api/myitems/addlisting/', {
             method: 'POST',

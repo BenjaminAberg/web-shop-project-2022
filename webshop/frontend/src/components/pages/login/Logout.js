@@ -1,5 +1,6 @@
 import {Navigate} from 'react-router-dom';
 
+// Handle logout
 function Logout() {
 
     localStorage.clear();

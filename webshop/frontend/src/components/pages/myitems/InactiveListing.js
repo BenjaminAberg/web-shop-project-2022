@@ -1,4 +1,5 @@
 
+// Handle listing layout that the user sees in "shop/mylistings/"
 function InactiveListing(props){
     const cStyle = {
         width: '270px',

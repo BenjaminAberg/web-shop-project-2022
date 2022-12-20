@@ -1,5 +1,6 @@
 import {useState} from "react";
 
+// Handle text fields for adding new listing
 function AddListingInputForm(props) {
 
     const [title, setTitle] = useState('');

@@ -1,4 +1,5 @@
 
+// Container for viewing multiple listings
 function ListingContainer(props){
     const ccStyle ={
         display: "flex",

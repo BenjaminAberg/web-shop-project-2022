@@ -3,6 +3,7 @@ import RoutingComponent from './components/routing/RoutingComponent';
 import Shop from './components/pages/shop/Shop';
 import LoadMore from './components/routing/LoadMore';
 
+// Main app
 function App() {
     return (
       <div>

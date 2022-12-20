@@ -1,5 +1,6 @@
 import RemoveFromCart from "./RemoveFromCart"
 
+// Function handling listing layout in cart
 function CartListing(props){
     const cStyle = {
         display: 'flex',

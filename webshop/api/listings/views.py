@@ -7,8 +7,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
 from django.views import View
 from .models import Listing
-from .forms import CreateListingForm
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.db.models import Q
 
 # Create your views here.
@@ -22,30 +21,6 @@ class BoughtAndSoldListingSetPagination(PageNumberPagination):
     page_size = 100
     page_size_query_param = 'page_size'
     max_page_size = 100
-
-class AddListingForm(View):
-    permission_classes = [IsAuthenticated, ]
-    authentication_classes = [TokenAuthentication, ]
-
-    def get(self, request):
-        form = CreateListingForm()
-        return render(request, 'create_listing_form.html', {"form": form})
-
-    def post(self, request):
-        form = CreateListingForm(request.POST)
-
-        if form.is_valid():
-            cd = form.cleaned_data
-            title = cd['title']
-            description = cd['description']
-            price = cd['price']
-            owner=self.request.user
-            
-            listing = Listing(title=title, description=description, price=price, owner=owner.user)
-            listing.save()
-            return HttpResponseRedirect(reverse("viewlistings"))
-
-        return render(request, 'create_listing_form.html', {'form': form})
 
 class ListListingsApi(GenericAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly, ]

@@ -1,5 +1,6 @@
 import AddToCart from "../cart/AddToCart"
 
+// Listing layout 
 function Listing(props){
     const cStyle = {
         width: '270px',

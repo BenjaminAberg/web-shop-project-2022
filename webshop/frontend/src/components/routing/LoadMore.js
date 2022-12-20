@@ -2,6 +2,7 @@ import Listing from "../pages/shop/Listing";
 import ListingContainer from "../pages/shop/ListingContainer";
 import {useState, useEffect} from 'react';
 
+// Handle load more functionality
 function LoadMore() {
 
     const apiuri = "http://127.0.0.1:8000/api/listings";
@@ -15,6 +16,7 @@ function LoadMore() {
     listingList = listings.map((listing) => 
                 <Listing id={listing.id} title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}></Listing>)
 
+    // Fetch next page
     const fetchMore = (page) => {
 
         fetch(page)

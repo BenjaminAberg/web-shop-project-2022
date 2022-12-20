@@ -1,4 +1,6 @@
 
+// Add to cart functionality
+
 function AddToCart(props) {
     const addToCart = (listing_id) => {
         fetch(' http://127.0.0.1:8000/api/cart/add/' + listing_id, {
