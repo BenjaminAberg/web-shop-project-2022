@@ -7,6 +7,7 @@ from ..listings.serializers import ListingSerializer
 from .serializers import CartSerializer
 from .models import Cart
 from django.http import HttpResponse
+from django.core import mail
 
 
 class CartPagination(PageNumberPagination):
@@ -121,12 +122,27 @@ class HandlePaymentApi(GenericAPIView):
                 serializer.save()
                 cart.listings.remove(listing)
 
-                # Send email: requirement 10 d.
-                print("EMAIL to seller: " + str(listing.owner.email) 
-                + ", Your listing " + str(listing.title) + " was purchased by " + str(self.request.user))
+                # Send email functionality
 
-                print("EMAIL to buyer: " + str(self.request.user.email) 
-                + ", You purchased item: " + str(listing.title) + " from seller " + str(listing.owner.username))
+                connection = mail.get_connection()   # Use default email connection
+
+                emailSeller = mail.EmailMessage(
+                    'Email to seller ' + str(listing.owner.username),
+                    'Your listing ' + str(listing.title) + ' was purchased by ' + str(self.request.user),
+                    'backend@backend.com',
+                    [str(listing.owner.email)],
+                    connection=connection,
+                )
+
+                emailBuyer = mail.EmailMessage(
+                    'Email to buyer ' + str(self.request.user),
+                    'You purchased item: ' + str(listing.title) + ' from seller ' + str(listing.owner.username),
+                    'backend@backend.com',
+                    [str(self.request.user.email)],
+                    connection=connection,
+                )
+
+                connection.send_messages([emailSeller, emailBuyer])
             
             else:
                 return HttpResponse("Price updated, new price: " + str(listing.price), status=406)

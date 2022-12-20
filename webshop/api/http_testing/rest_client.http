@@ -89,9 +89,9 @@ Authorization: Token b72c4249f321f71e9a1dfa362316d6203aef1158
 Content-Type: application/json
 
 {
-  "title": "Kitchen oven",
-  "description": "working condition",
-  "price": 50
+  "title": "Ford fiesta",
+  "description": "rusty",
+  "price": 600
 }
 
 ###
