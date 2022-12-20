@@ -2,11 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MyWebShop</title>
+    <title>Webshop</title>
 </head>
 <body>
-<h1>Hello, I am a static file</h1>
+<h1>Welcome to the webshop landing page!</h1><br/><br/>
 
-Go to <a href="/shop"> Shop</a>
+<h2>There are currently {{ num_listings }} listings in the webshop.</h2>
+<button onclick={flushDatabase}><h3>Delete all items and generate 6 new users and 30 new items</h3></button><br/><br/>
+
+<h2>By going to the shop you accept our terms and conditions.</h2>
+
+<form action="/shop/">
+    <input type="submit" value="Go to shop" />
+</form>
+
 </body>
 </html>

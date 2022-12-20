@@ -91,7 +91,7 @@ Content-Type: application/json
 {
   "title": "Ford fiesta",
   "description": "rusty",
-  "price": 600
+  "price": 500
 }
 
 ###
