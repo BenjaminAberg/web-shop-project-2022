@@ -11,6 +11,17 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost:8000/api/changepass/
+Authorization: Token 26771347bca5bbed877b04a04972b34976970ae3
+Content-Type: application/json
+
+{
+  "old_password": "pass1",
+  "new_password": "pass2"
+}
+
+###
+
 POST http://localhost:8000/api/cart/purchase/46/100
 Authorization: Token b72c4249f321f71e9a1dfa362316d6203aef1158
 Content-Type: application/json
