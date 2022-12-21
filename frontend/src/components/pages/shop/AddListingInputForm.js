@@ -22,10 +22,13 @@ function AddListingInputForm(props) {
     return (
         <div className='Listings'>
             <label>
-                Title:  <input type='text' value={title} onChange={updateTitle} required />
-                Description:  <input type='text' value={description} onChange={updateDescription} required />
+                Title:  <input type='text' value={title} onChange={updateTitle} required />&nbsp;&nbsp;
+                Description:  <input type='text' value={description} onChange={updateDescription} required />&nbsp;&nbsp;
                 Price:  <input type='text' value={price} onChange={updatePrice} required />
             </label>
+            &nbsp;
+            &nbsp;
+            &nbsp;
             <button onClick={() => props.AddListing(title, description, price)}>{props.text}</button>
         </div>
     )

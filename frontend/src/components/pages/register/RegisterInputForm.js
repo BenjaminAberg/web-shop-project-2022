@@ -24,10 +24,13 @@ function RegisterInputForm(props){
     return (
         <div className="Listings">
             <label>
-                Email:  <input type='text' value={email} onChange={updateEValue}/>
-                Username:  <input type='text' value={user} onChange={updateUValue}/>
-                Password:  <input type='password' value={pass} onChange={updatePValue}/>
+                Email:  <input type='text' value={email} onChange={updateEValue}/>&nbsp;&nbsp;
+                Username:  <input type='text' value={user} onChange={updateUValue}/>&nbsp;&nbsp;
+                Password:  <input type='password' value={pass} onChange={updatePValue}/>&nbsp;&nbsp;
             </label>
+            &nbsp;
+            &nbsp;
+            &nbsp;
             <button onClick={() => props.Register(user, pass, email)}>{props.text}</button>
         </div>
     )

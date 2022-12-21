@@ -27,7 +27,7 @@ function AddToCart(props) {
 
     return(
         <div>
-            <button className="Listing-button" onClick={() => addToCart(props.id)}>Add to cart</button>
+            <button onClick={() => addToCart(props.id)}>Add to cart</button>
         </div>
     )
 }

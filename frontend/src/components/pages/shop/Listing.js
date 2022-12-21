@@ -19,16 +19,18 @@ function Listing(props){
 function Square(props){
     const sStyle = {
         width: '270px',
-        height: '240px',
+        height: '230px',
         backgroundColor: '#ebf0ec'
     }
 
     if (localStorage.getItem("token") !== null) {
-        return (<div style={sStyle}>
+        return (<div id="wrapper" style={sStyle}>
                 <b>Description:&nbsp;</b><i>{props.description}</i><br></br>
                 <b>Price:&nbsp;</b><i>{props.price}€</i><br></br>
                 <b>Created at:&nbsp;</b><i>{props.created_at}</i><br></br>
-                <AddToCart id={props.id}></AddToCart>
+                <div className="Add-cart-button">
+                    <AddToCart id={props.id}></AddToCart>
+                </div>
             </div>
         )
     } else {
@@ -46,7 +48,7 @@ function Label(props){
         width: '270px',
         height: '30px',
     }
-     return <div style={lStyle}><h3>{props.label}</h3></div>
+     return <div className="Label" style={lStyle}><h3>{props.label}</h3></div>
 }
 
 export default Listing;

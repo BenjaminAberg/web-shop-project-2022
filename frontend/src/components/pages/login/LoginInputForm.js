@@ -20,9 +20,12 @@ function LoginInputForm(props){
     return (
         <div className="Listings">
             <label>
-                Username:  <input type='text' value={user} onChange={updateUValue}/>
+                Username:  <input type='text' value={user} onChange={updateUValue}/>&nbsp;&nbsp;
                 Password:  <input type='password' value={pass} onChange={updatePValue}/>
             </label>
+            &nbsp;
+            &nbsp;
+            &nbsp;
             <button onClick={() => props.Login(user, pass)}>{props.text}</button>
         </div>
     )

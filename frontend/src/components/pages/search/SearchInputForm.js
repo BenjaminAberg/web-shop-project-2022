@@ -14,6 +14,9 @@ function SearchInputForm(props){
             <label>
                 Search webshop:  <input type='text' value={search} onChange={updateSearch}/>
             </label>
+            &nbsp;
+            &nbsp;
+            &nbsp;
             <button onClick={() => props.Search(search)}>Search</button>
         </div>
     )

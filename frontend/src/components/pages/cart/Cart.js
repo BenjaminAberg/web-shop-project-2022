@@ -186,9 +186,9 @@ function Cart(props){
         return <div>
                     <CartListingContainer listings={listingList}></CartListingContainer>
                     <h5 className="Listings">Total: {cartTotal}€</h5>
-                    <button class='Cart-button' onClick={handlePayment}>Make payment</button>
-                    <button class='Cart-button' onClick={deleteAll}> Empty cart</button>
-                    <button class='Cart-button' onClick={fetchCart}>Update cart</button>
+                    <button className="Cart-buttons" onClick={handlePayment}>Make payment</button>
+                    <button className="Cart-buttons" onClick={deleteAll}> Empty cart</button>
+                    <button className="Cart-buttons" onClick={fetchCart}>Update cart</button>
                 </div>
     }    
 }

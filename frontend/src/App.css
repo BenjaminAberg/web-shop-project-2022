@@ -17,14 +17,45 @@
 
 .Listing-button {
   display: flex;
-  position: sticky;
+  position: absolute;
   align-self: center;
   width: auto;
-  margin-top: 132px;
   margin-left: 90px;
+  bottom: 10px
 }
 
-.Cart-button {
+.Add-cart-button {
   display: inline;
-  margin: 10px;
+  position: absolute;
+  margin-left: 92px;
+  bottom: 10px;
+}
+
+.Cart-buttons {
+  display: inline;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 58px;
+}
+
+.Listing-parent {
+  width: '270px';
+  height: '240px';
+}
+
+.Edit-listing {
+  display: inline;
+  position: absolute;
+  margin-left: 6px;
+  bottom: 10px;
+}
+
+.Label {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#wrapper { 
+  position: relative; 
+  width: 960px; 
 }

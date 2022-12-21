@@ -1,7 +1,6 @@
 
 // Handle listing layout that the user sees in "shop/mylistings/"
 
-import { useState } from "react";
 import EditListing from "./EditListing";
 
 function InactiveListing(props){
@@ -23,7 +22,7 @@ function InactiveListing(props){
 function Square(props){
     const sStyle = {
         width: '270px',
-        height: '240px',
+        height: '230px',
         backgroundColor: '#ebf0ec'
     }
 
@@ -31,11 +30,13 @@ function Square(props){
 
         console.log(props.owner);
 
-        return (<div style={sStyle}>
+        return (<div id="wrapper" style={sStyle}>
             <b>Description:&nbsp;</b><i>{props.description}</i><br></br>
             <b>Price:&nbsp;</b><i>{props.price}€</i><br></br>
             <b>Created at:&nbsp;</b><i>{props.created_at}</i><br></br>
-            <EditListing id={props.id} title={props.title} description={props.description}></EditListing>
+            <div className="Edit-listing">
+                <EditListing id={props.id} title={props.title} description={props.description}></EditListing>  
+            </div>
         </div>
         )
     } else {
@@ -53,7 +54,7 @@ function Label(props){
         width: '270px',
         height: '30px',
     }
-     return <div style={lStyle}><h3>{props.label}</h3></div>
+     return <div className="Label" style={lStyle}><h3>{props.label}</h3></div>
 }
 
 export default InactiveListing;
