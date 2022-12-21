@@ -11,7 +11,6 @@ def index(request):
     template = loader.get_template('../static/home.html')
 
     num_listings = Listing.objects.all().filter(sold=0).count()
-    print(num_listings)
 
     context = {
         'num_listings': num_listings
