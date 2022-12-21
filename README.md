@@ -94,3 +94,14 @@ The webshop runs on a Python-based backend (Django) with JavaScript frontend (Re
   - SQLite database.
   - Console backend for emails.
   
+#### Run project
+
+- cd web-shop-project-2022-BenjaminAberg
+- python -m venv venv
+- venv\Scripts\activate.bat (on Windows)
+- pip install -r requirements.txt
+- cd frontend
+- npm install
+- npm run build
+- cd ..
+- python manage.py runserver
