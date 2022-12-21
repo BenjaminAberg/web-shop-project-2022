@@ -61,7 +61,9 @@ The webshop runs on a Python-based backend (Django) with JavaScript frontend (Re
     - Shop: /shop
     - Signup: /signup
     - Login: /login
+    - Logout: /logout
     - My items: /myitems
+    - Search: /search
     
 - Requirement 13: Display inventory (OPTIONAL)
   - A logged in user can view own items for sale, sold items and bought items at /myitems.
@@ -91,6 +93,4 @@ The webshop runs on a Python-based backend (Django) with JavaScript frontend (Re
   - Django serves JS for the shop page and HTML for the landing page.
   - SQLite database.
   - Console backend for emails.
-  
- 
   
