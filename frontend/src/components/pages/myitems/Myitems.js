@@ -16,7 +16,7 @@ function Myitems() {
     let boughtListingsList = [];
 
     listingList = listings.map(listing => (
-        <InactiveListing id={listing.id} title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at}/>
+        <InactiveListing id={listing.id} title={listing.title} description={listing.description} price={listing.price} created_at={listing.created_at} owner={listing.owner}/>
     ))
 
     soldListingsList = soldListings.map(listing => (
