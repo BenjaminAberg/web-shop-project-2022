@@ -17,17 +17,17 @@ const RoutingComponent = () =>{
                     <BrowserRouter>
                         <div className={"App"} >
                             <NavLink className={"menu-item"} to="/shop">Home</NavLink>
-                            <NavLink className={"menu-item"} to="/shop/myitems">My items</NavLink>
-                            <NavLink className={"menu-item"} to="/shop/logout">Logout</NavLink>
-                            <NavLink className={"menu-item-right"} to="/shop/search">Search</NavLink>
-                            <NavLink className={"menu-item-right"} to="/shop/cart" >View cart</NavLink>
+                            <NavLink className={"menu-item"} to="/myitems">My items</NavLink>
+                            <NavLink className={"menu-item"} to="/logout">Logout</NavLink>
+                            <NavLink className={"menu-item-right"} to="/search">Search</NavLink>
+                            <NavLink className={"menu-item-right"} to="/cart" >View cart</NavLink>
                         </div>
                         <Routes>
                             <Route path="/shop"/>
-                            <Route path="/shop/myitems" element={<Myitems />} />
-                            <Route path="/shop/logout" element={<Logout />} />
-                            <Route path="/shop/search" element={<Search />} />
-                            <Route path="/shop/cart" element={<Cart />} />
+                            <Route path="/myitems" element={<Myitems />} />
+                            <Route path="/logout" element={<Logout />} />
+                            <Route path="/search" element={<Search />} />
+                            <Route path="/cart" element={<Cart />} />
                         </Routes>
                     </BrowserRouter>
                 </div>
@@ -39,18 +39,18 @@ const RoutingComponent = () =>{
                 <BrowserRouter>
                     <div className={"App"} >
                         <NavLink className={"menu-item"} to="/shop">Home</NavLink>
-                        <NavLink className={"menu-item"} to="/shop/signup">Register</NavLink>
-                        <NavLink className={"menu-item"} to="/shop/login">Login</NavLink>
-                        <NavLink className={"menu-item-right"} to="/shop/search">Search</NavLink>
+                        <NavLink className={"menu-item"} to="/signup">Register</NavLink>
+                        <NavLink className={"menu-item"} to="/login">Login</NavLink>
+                        <NavLink className={"menu-item-right"} to="/search">Search</NavLink>
                     </div>
                     <div>
 
                     </div>
                     <Routes>
                         <Route path="/shop"/>
-                        <Route path="/shop/signup" element={<Register />} />
-                        <Route path="/shop/login" element={<Login />} />
-                        <Route path="/shop/search" element={<Search />} />
+                        <Route path="/signup" element={<Register />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/search" element={<Search />} />
                     </Routes>
                 </BrowserRouter>
             </div>

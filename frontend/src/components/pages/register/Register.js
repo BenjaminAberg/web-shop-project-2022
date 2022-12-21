@@ -36,7 +36,7 @@ function Register() {
     }
 
     if (registered) {
-        return <Navigate replace to={"/shop/login"}></Navigate>
+        return <Navigate replace to={"/login"}></Navigate>
     } 
 
     else return (

@@ -24,7 +24,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8000/api/listings/getprice/28
+GET http://127.0.0.1:8000/api/search/volvo/
 Content-Type: application/json
 
 ###

@@ -17,7 +17,7 @@ class ListingSetPagination(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 100
 
-class BoughtAndSoldListingSetPagination(PageNumberPagination):
+class OwnAndBoughtAndSoldListingSetPagination(PageNumberPagination):
     page_size = 100
     page_size_query_param = 'page_size'
     max_page_size = 100
@@ -92,7 +92,7 @@ class EditListingApi(GenericAPIView):
 class ListOwnItemsApi(GenericAPIView):
     permission_classes = [IsAuthenticated, ]
     authentication_classes = [TokenAuthentication, ]
-    pagination_class = ListingSetPagination
+    pagination_class = OwnAndBoughtAndSoldListingSetPagination
 
     def get_queryset(self):
         return Listing.objects.all()
@@ -157,7 +157,7 @@ class GetListingByIdApi(GenericAPIView):
 class BoughtListingsApi(GenericAPIView):
     permission_classes = [IsAuthenticated, ]
     authentication_classes = [TokenAuthentication, ]
-    pagination_class = BoughtAndSoldListingSetPagination
+    pagination_class = OwnAndBoughtAndSoldListingSetPagination
 
     def get(self, request):
 
@@ -182,7 +182,7 @@ class BoughtListingsApi(GenericAPIView):
 class SoldListingsApi(GenericAPIView):
     permission_classes = [IsAuthenticated, ]
     authentication_classes = [TokenAuthentication, ]
-    pagination_class = BoughtAndSoldListingSetPagination
+    pagination_class = OwnAndBoughtAndSoldListingSetPagination
 
     def get(self, request):
 

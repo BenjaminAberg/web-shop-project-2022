@@ -1,7 +1,8 @@
 import {useState} from 'react';
-import Listing from '../shop/Listing';
-import ListingContainer from '../shop/ListingContainer';
+import Listing from "../shop/Listing";
+import ListingContainer from "../shop/ListingContainer";
 import SearchInputForm from './SearchInputForm';
+import LoadMoreSearch from './LoadMoreSearch';
 
 // Handle search functionality
 function Search() {
@@ -17,6 +18,7 @@ function Search() {
 
     // Fetch items containing search term in title
     const search = (search_term) => {
+
         fetch(' http://127.0.0.1:8000/api/search/' + search_term, {
             method: 'GET',
             headers: {
@@ -47,8 +49,11 @@ function Search() {
             </div>
             <div>
                 <h3 className='Listings'>Listings containing search term "{searchParam}":</h3>
-                <ListingContainer listings={searchList}></ListingContainer>
-            </div>   
+                <ListingContainer listings={searchList}></ListingContainer>        
+            </div>
+            <div>
+                <LoadMoreSearch searchTerm={searchParam}></LoadMoreSearch>
+            </div>
         </div>
     )
 }
