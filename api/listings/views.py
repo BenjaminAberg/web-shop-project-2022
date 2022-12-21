@@ -81,7 +81,6 @@ class EditListingApi(GenericAPIView):
         if request.user == listing.owner:
             data = request.data 
             serializer = ListingSerializer(listing, data=data)
-            print(data)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data)
