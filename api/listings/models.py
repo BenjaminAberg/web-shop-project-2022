@@ -11,9 +11,9 @@ class Listing(models.Model):
     description = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=6, decimal_places=1)
     created_at = models.DateTimeField(auto_now_add=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="owner")
     sold = models.BooleanField(default=False)
-    buyer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    buyer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="buyer")
 
 
     def price_float(self):
