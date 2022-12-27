@@ -1,5 +1,5 @@
 # Web Technologies 2022 - Webshop Project
-#### Webshop by Benjamin Åberg - benjamin.aberg@abo.fi
+#### Webshop by Benjamin Åberg
 
 <br />
 
@@ -96,7 +96,7 @@ The webshop runs on a Python-based backend (Django) with JavaScript frontend (Re
   
 #### Run project
 
-- cd web-shop-project-2022-BenjaminAberg
+- cd web-shop-project-2022
 - python -m venv venv
 - venv\Scripts\activate.bat (on Windows)
 - pip install -r requirements.txt
